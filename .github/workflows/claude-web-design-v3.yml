@@ -28,19 +28,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           
-          # Web開発特化設定
-          mode: 'auto'
-          anthropic_model: 'claude-3-sonnet-20240229'
-          branch_prefix: 'design/'
-          base_branch: 'main'
-          
-          # Web開発用ツール制限
-          allowed_tools: 'create_files,edit_files,read_files,create_pr'
-          
           # 実行制限
           max_turns: 8
           timeout_minutes: 12
-          use_sticky_comment: true
           
           # Web デザイン特化カスタム指示
           custom_instructions: |
