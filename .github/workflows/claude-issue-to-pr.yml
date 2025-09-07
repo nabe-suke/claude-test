@@ -1,0 +1,47 @@
+name: Claude Issue to PR Automation
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  claude-issue-handler:
+    # Issueまたはコメントに@claudeが含まれている場合のみ実行
+    if: |
+      (github.event_name == 'issues' && contains(github.event.issue.body, '@claude')) ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude'))
+    
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: read
+      checks: write
+      
+    steps:
+      - name: Claude Code Action - Issue to PR
+        uses: anthropics/claude-code-action@beta
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Issue処理モード
+          handle_issues: true
+          # PR作成を許可
+          create_pull_requests: true
+          # カスタムプロンプト（オプション）
+          system_prompt: |
+            あなたはGitHubリポジトリの開発アシスタントです。
+            Issueの内容を分析して、以下のタスクを実行してください：
+            
+            1. Issue の要求を理解する
+            2. 必要なコード変更を特定する
+            3. 適切なブランチを作成する
+            4. コードを実装する
+            5. テストコードも追加する
+            6. PR を作成して Issue をリンクする
+            
+            日本語でコメントを記述し、ベストプラクティスに従ってください。
