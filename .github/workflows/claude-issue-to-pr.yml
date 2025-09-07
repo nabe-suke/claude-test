@@ -28,12 +28,12 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Issue処理モード
-          handle_issues: true
-          # PR作成を許可
-          create_pull_requests: true
-          # カスタムプロンプト（オプション）
-          system_prompt: |
+          # モード設定（issueからPR作成を含む）
+          mode: 'auto'
+          # ブランチプレフィックス
+          branch_prefix: 'claude/'
+          # カスタム指示
+          custom_instructions: |
             あなたはGitHubリポジトリの開発アシスタントです。
             Issueの内容を分析して、以下のタスクを実行してください：
             
@@ -45,3 +45,9 @@ jobs:
             6. PR を作成して Issue をリンクする
             
             日本語でコメントを記述し、ベストプラクティスに従ってください。
+          # Claude 3 Sonnet を使用
+          anthropic_model: 'claude-3-sonnet-20240229'
+          # 最大ターン数
+          max_turns: 5
+          # タイムアウト設定
+          timeout_minutes: 10
