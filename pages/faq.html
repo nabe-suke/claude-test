@@ -10,8 +10,28 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-    <!-- ヘッダー（共通部品） -->
-    <div id="header-placeholder"></div>
+    <!-- ヘッダー -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="D's tech" class="logo-img">
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home">ホーム</a></li>
+                <li><a href="../index.html#about">概要</a></li>
+                <li><a href="../index.html#services">サービス</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="../index.html#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- FAQセクション -->
     <section class="content-section" style="padding-top: 120px;">
@@ -119,23 +139,34 @@
         </div>
     </section>
 
-    <!-- フッター（共通部品） -->
-    <div id="footer-placeholder"></div>
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../index.html">
+                        <img src="../assets/images/logo.png" alt="D's tech" class="logo-img">
+                    </a>
+                </div>
+                <p class="footer-description">茨城県阿見町でホームページ作成・ウェブデザインを低価格で提供</p>
+                <p class="footer-description">最新技術を使って、モダンで美しいWebサイトを提供します</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html#home">ホーム</a>
+                <a href="../index.html#about">概要</a>
+                <a href="../index.html#services">サービス</a>
+                <a href="faq.html">FAQ</a>
+                <a href="../index.html#contact">お問い合わせ</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 D`s tech. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // 共通コンポーネント読み込み
-        async function loadComponent(elementId, componentPath) {
-            try {
-                const response = await fetch(componentPath);
-                const html = await response.text();
-                document.getElementById(elementId).innerHTML = html;
-            } catch (error) {
-                console.error(`コンポーネントの読み込みに失敗: ${componentPath}`, error);
-            }
-        }
-
         // FAQ アコーディオン機能
-        function initFAQ() {
+        document.addEventListener('DOMContentLoaded', function() {
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {
@@ -155,16 +186,25 @@
                     }
                 });
             });
-        }
-
-        // DOMContentLoaded時の初期化
-        document.addEventListener('DOMContentLoaded', async () => {
-            // 共通コンポーネント読み込み
-            await loadComponent('header-placeholder', '../components/header.html');
-            await loadComponent('footer-placeholder', '../components/footer.html');
             
-            // FAQ機能初期化
-            initFAQ();
+            // モバイルメニュー機能
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                });
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
         });
     </script>
 </body>
