@@ -22,8 +22,10 @@ class Slideshow {
         
         // ホバー時に自動スライド停止
         const hero = document.querySelector('.hero');
-        hero.addEventListener('mouseenter', () => this.stopAutoSlide());
-        hero.addEventListener('mouseleave', () => this.startAutoSlide());
+        if (hero) {
+            hero.addEventListener('mouseenter', () => this.stopAutoSlide());
+            hero.addEventListener('mouseleave', () => this.startAutoSlide());
+        }
     }
     
     goToSlide(slideIndex) {
@@ -56,6 +58,9 @@ class Slideshow {
 
     
     startAutoSlide() {
+        if (this.slideInterval) {
+            clearInterval(this.slideInterval);
+        }
         this.slideInterval = setInterval(() => {
             this.nextSlide();
         }, 5000);
@@ -92,6 +97,7 @@ function initSmoothScroll() {
 // ナビゲーションバーのスクロール効果
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -136,7 +142,7 @@ function initMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
     
-    if (!navToggle) return;
+    if (!navToggle || !navMenu) return;
     
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
