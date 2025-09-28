@@ -69,15 +69,13 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: parseInt(issueNumber),
-              body: `🚀 **自動処理開始**\n\n📋 **作業ブランチ**: \`${{ env.BRANCH_NAME }}\`\n⏳ **ステータス**: コード変更中...\n🤖 **担当**: Claude AI Assistant`
+              body: `**自動処理開始**\n\n**作業ブランチ**: \`${{ env.BRANCH_NAME }}\`\n**ステータス**: コード変更中...\n**担当**: Claude AI Assistant`
             });
 
-      - name: Get Issue content and generate code
+      - name: Process Issue request
         uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
-            
             const issueNumber = parseInt(process.env.ISSUE_NUMBER);
             const issue = await github.rest.issues.get({
               owner: context.repo.owner,
@@ -85,50 +83,12 @@ jobs:
               issue_number: issueNumber
             });
             
-            const issueBody = issue.data.body || 'Issue内容なし';
-            const issueTitle = issue.data.title || 'タイトルなし';
-            
-            // 安全な文字列処理（HTMLエスケープ）
-            const escapeHtml = (str) => str.replace(/[&<>"']/g, (match) => {
-              const escapeMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-              return escapeMap[match];
-            });
-            
-            const safeTitle = escapeHtml(issueTitle).substring(0, 100);
-            const safeBody = escapeHtml(issueBody).substring(0, 200);
-            
-            // サンプルファイル作成
-            const sampleContent = `<!-- D's tech - Issue #${issueNumber} 対応 -->
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${safeTitle} - D's tech</title>
-</head>
-<body>
-    <h1>🏢 D's tech - ${safeTitle}</h1>
-    <p>茨城県阿見町のホームページ制作サービス</p>
-    <p>料金: 月額1万円（税込）</p>
-    <p>Issue内容: ${safeBody}</p>
-</body>
-</html>`;
-            
-            // ファイル作成
-            fs.writeFileSync('sample-page.html', sampleContent);
-            
-            console.log('サンプルファイルを作成しました');
+            console.log(`Issue #${issueNumber}: ${issue.data.title}`);
+            console.log('ワークフローテスト完了 - 実際の実装ではClaude APIを呼び出してコードを生成します');
 
-      - name: Commit changes
+      - name: Create empty commit
         run: |
-          # 変更があるか確認
-          if git diff --quiet && git diff --cached --quiet; then
-            echo "変更がありません。空のコミットを作成します。"
-            git commit --allow-empty -m "🏢 D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 (空コミット)"
-          else
-            git add .
-            git commit -m "🏢 D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応"
-          fi
+          git commit --allow-empty -m "D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 (ワークフローテスト)"
           git push origin ${{ env.BRANCH_NAME }}
 
       - name: Create Pull Request
@@ -148,10 +108,10 @@ jobs:
               const pr = await github.rest.pulls.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: `🏢 D's tech: Issue #${issueNumber} に対応`,
+                title: `D's tech: Issue #${issueNumber} に対応`,
                 head: '${{ env.BRANCH_NAME }}',
                 base: defaultBranch,
-                body: `## 🎯 概要\nIssue #${issueNumber} の要望に対応した実装です。\n\n## 📝 変更内容\n- サンプルページの作成\n- D's techの事業情報（茨城県阿見町・月額1万円）を含む\n\n## 📱 レスポンシブ対応\n- モバイルファースト設計\n- タブレット・デスクトップ対応\n\n## 🌐 SEO対策\n- 茨城県阿見町のローカルSEOを考慮\n\n## 🔗 関連Issue\nCloses #${issueNumber}\n\n---\n🤖 **自動作成**: GitHub Actions + Claude AI Assistant`
+                body: `## 概要\nIssue #${issueNumber} の要望に対応したワークフローテストです。\n\n## テスト内容\n- GitHub Actionsワークフローの動作確認\n- IssueからPR自動作成のテスト\n- D's techサイト専用設定の検証\n\n## 次のステップ\n実際の実装ではClaude APIを呼び出してコードを生成します。\n\n## 関連Issue\nCloses #${issueNumber}\n\n---\n**自動作成**: GitHub Actions + Claude AI Assistant`
               });
               
               // PR番号を環境変数に保存
@@ -163,9 +123,7 @@ jobs:
               console.error('PR作成エラー:', error.message);
               throw error;
             }
-          
 
-          
       - name: Update Issue with completion
         if: success()
         uses: actions/github-script@v7
@@ -177,7 +135,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: `✅ **処理完了**\n\n🔗 **作成されたPR**: #${{ env.PR_NUMBER }}\n📋 **ブランチ**: \`${{ env.BRANCH_NAME }}\`\n🎯 **レビュー**: PRをご確認ください\n\n---\n\n🏢 **D's tech 情報**\n- 事業地: 茨城県阿見町\n- 料金: 月額1万円（税込）\n- 特徴: 個人事業主ならではの丁寧なサポート`
+              body: `**処理完了**\n\n**作成されたPR**: #${{ env.PR_NUMBER }}\n**ブランチ**: \`${{ env.BRANCH_NAME }}\`\n**レビュー**: PRをご確認ください\n\n---\n\n**D's tech 情報**\n- 事業地: 茨城県阿見町\n- 料金: 月額1万円（税込）\n- 特徴: 個人事業主ならではの丁寧なサポート`
             });
             
             // Issueにラベル追加
@@ -186,7 +144,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issueNumber,
-                labels: ['🤖 claude-processed', '📋 pr-created']
+                labels: ['claude-processed', 'pr-created']
               });
             } catch (error) {
               console.log('ラベル追加に失敗しましたが、処理を継続します');
@@ -214,7 +172,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: `❌ **処理失敗**\n\n🔍 **詳細**: [ワークフロー実行ログ](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})をご確認ください\n🔄 **再実行**: Issueを編集して再度 \`@claude\` でお試しください\n\n---\n\n🏢 **D's tech サポート**\nお困りの際はお気軽にお声がけください。`
+              body: `**処理失敗**\n\n**詳細**: [ワークフロー実行ログ](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})をご確認ください\n**再実行**: Issueを編集して再度 \`@claude\` でお試しください\n\n---\n\n**D's tech サポート**\nお困りの際はお気軽にお声がけください。`
             });
             
             try {
@@ -222,7 +180,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issueNumber,
-                labels: ['❌ claude-failed']
+                labels: ['claude-failed']
               });
             } catch (error) {
               console.log('ラベル追加に失敗しましたが、エラーコメントは投稿しました');
