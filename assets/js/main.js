@@ -27,14 +27,25 @@ class Slideshow {
     }
     
     goToSlide(slideIndex) {
-        // 現在のスライドを非アクティブに
-        this.slides[this.currentSlide].classList.remove('active');
-        this.indicators[this.currentSlide].classList.remove('active');
-        
-        // 新しいスライドをアクティブに
+        const prevSlide = this.currentSlide;
         this.currentSlide = slideIndex;
-        this.slides[this.currentSlide].classList.add('active');
-        this.indicators[this.currentSlide].classList.add('active');
+        
+        // 全スライドの状態をリセット
+        this.slides.forEach((slide, index) => {
+            slide.classList.remove('active', 'prev', 'next');
+            if (index === this.currentSlide) {
+                slide.classList.add('active');
+            } else if (index === prevSlide) {
+                slide.classList.add('prev');
+            } else {
+                slide.classList.add('next');
+            }
+        });
+        
+        // インジケーター更新
+        this.indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentSlide);
+        });
     }
     
     nextSlide() {
@@ -42,10 +53,12 @@ class Slideshow {
         this.goToSlide(nextIndex);
     }
     
+
+    
     startAutoSlide() {
         this.slideInterval = setInterval(() => {
             this.nextSlide();
-        }, 3000);
+        }, 5000);
     }
     
     stopAutoSlide() {
