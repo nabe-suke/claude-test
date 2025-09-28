@@ -113,7 +113,7 @@ body {
 /* メインビジュアル（スライドショー） */
 .hero {
     height: 100vh;
-    background: var(--bg-gradient);
+    background: white;
     position: relative;
     display: flex;
     align-items: center;
