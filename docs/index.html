@@ -3,345 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サンプルページ - GitHub Pages</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h2 {
-            color: #4a5568;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
-
-        .card p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .feature-list li {
-            padding: 0.5rem 0;
-            color: #555;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .feature-list li::before {
-            content: "✨";
-            position: absolute;
-            left: 0;
-            top: 0.5rem;
-        }
-
-        .button {
-            display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .stat-item {
-            text-align: center;
-            color: white;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .github-link {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .github-link:hover {
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-    </style>
+    <title>Claude Web Design - メインページ</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="pulse">🚀 サンプルプロジェクト</h1>
-            <p class="subtitle">GitHub Pagesで公開されたモダンなウェブサイト</p>
-        </header>
+    <!-- ヘッダー（共通部品） -->
+    <div id="header-placeholder"></div>
 
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">プロジェクト</div>
+    <!-- メインビジュアル（スライドショー） -->
+    <section id="home" class="hero">
+        <div class="slideshow-container">
+            <div class="slide active">
+                <div class="slide-content">
+                    <h1>モダンなWebデザイン</h1>
+                    <p>美しく機能的なウェブサイトを作成します</p>
+                    <a href="#services" class="cta-button">詳細を見る</a>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">ユーザー</div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>レスポンシブ対応</h1>
+                    <p>あらゆるデバイスで最適な表示を実現</p>
+                    <a href="#about" class="cta-button">もっと知る</a>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">99%</div>
-                <div class="stat-label">満足度</div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="card">
-                <h2>📋 プロジェクト概要</h2>
-                <p>これはGitHub Pagesで公開するためのサンプルHTMLページです。レスポンシブデザインとモダンなUIを採用しています。</p>
-                <ul class="feature-list">
-                    <li>レスポンシブデザイン対応</li>
-                    <li>モダンなグラスモーフィズム効果</li>
-                    <li>スムーズなアニメーション</li>
-                    <li>SEO対応済み</li>
-                </ul>
-                <a href="#" class="button">詳細を見る</a>
-            </div>
-
-            <div class="card">
-                <h2>🛠 技術スタック</h2>
-                <p>最新のWeb技術を使用して構築されています。</p>
-                <ul class="feature-list">
-                    <li>HTML5 + CSS3</li>
-                    <li>CSS Grid & Flexbox</li>
-                    <li>CSS Animations</li>
-                    <li>Backdrop Filter</li>
-                </ul>
-                <a href="#" class="button">技術詳細</a>
-            </div>
-
-            <div class="card">
-                <h2>📱 機能</h2>
-                <p>ユーザーフレンドリーな機能を多数搭載しています。</p>
-                <ul class="feature-list">
-                    <li>モバイル対応</li>
-                    <li>高速ロード</li>
-                    <li>アクセシビリティ配慮</li>
-                    <li>SEO最適化</li>
-                </ul>
-                <a href="#" class="button">機能一覧</a>
-            </div>
-
-            <div class="card">
-                <h2>🎨 デザイン</h2>
-                <p>美しく直感的なユーザーインターフェースを提供します。</p>
-                <ul class="feature-list">
-                    <li>グラデーション背景</li>
-                    <li>ガラスモーフィズム</li>
-                    <li>ホバーエフェクト</li>
-                    <li>スムーズトランジション</li>
-                </ul>
-                <a href="#" class="button">デザインガイド</a>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>高品質なコード</h1>
+                    <p>保守性と拡張性を重視した開発</p>
+                    <a href="#contact" class="cta-button">相談する</a>
+                </div>
             </div>
         </div>
+        <div class="slide-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2025 サンプルプロジェクト | 
-                <a href="https://github.com" class="github-link" target="_blank">
-                    🐙 GitHubで見る
-                </a>
-            </p>
-        </footer>
-    </div>
+    <!-- コンテンツセクション -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2>私たちについて</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>🎨 デザイン</h3>
+                    <p>ユーザー体験を重視したモダンなデザインを提供します</p>
+                </div>
+                <div class="content-card">
+                    <h3>💻 開発</h3>
+                    <p>最新技術を使用した高品質なWebサイトを構築します</p>
+                </div>
+                <div class="content-card">
+                    <h3>📱 レスポンシブ</h3>
+                    <p>すべてのデバイスで最適な表示を実現します</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // 簡単なインタラクション
-        document.addEventListener('DOMContentLoaded', function() {
-            // カードのホバーエフェクト
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
+    <section id="services" class="content-section">
+        <div class="container">
+            <h2>サービス</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>🌐 Webサイト制作</h3>
+                    <p>企業サイトからECサイトまで幅広く対応</p>
+                </div>
+                <div class="content-card">
+                    <h3>📊 UI/UXデザイン</h3>
+                    <p>使いやすさを追求したインターフェース設計</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // 統計数値のアニメーション
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const finalValue = stat.textContent;
-                let currentValue = 0;
-                const increment = finalValue.match(/\d+/)[0] / 50;
-                
-                const timer = setInterval(() => {
-                    currentValue += increment;
-                    if (currentValue >= finalValue.match(/\d+/)[0]) {
-                        stat.textContent = finalValue;
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(currentValue) + finalValue.replace(/\d+/, '');
-                    }
-                }, 30);
-            });
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2>お問い合わせ</h2>
+            <div class="content-card" style="max-width: 600px; margin: 0 auto;">
+                <p>プロジェクトのご相談やお見積もりは、お気軽にお問い合わせください。</p>
+                <a href="mailto:info@claude-design.com" class="cta-button">メールで相談</a>
+            </div>
+        </div>
+    </section>
 
-            // スクロール時のアニメーション
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+    <!-- フッター（共通部品） -->
+    <div id="footer-placeholder"></div>
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // すべてのカードを監視
-            cards.forEach(card => {
-                observer.observe(card);
-            });
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
