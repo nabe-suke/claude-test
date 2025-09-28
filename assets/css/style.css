@@ -500,6 +500,139 @@ body {
     color: #333;
 }
 
+/* 料金プランスタイル */
+.pricing-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pricing-plan {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
+    border: 2px solid var(--primary-blue);
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.plan-header h3 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.plan-price {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.price-note {
+    font-size: 1rem;
+    color: #666;
+    font-weight: normal;
+}
+
+.plan-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plan-features li {
+    padding: 0.5rem 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+.cost-examples {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.cost-examples h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.cost-table {
+    margin-bottom: 2rem;
+}
+
+.cost-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cost-row.total {
+    border-top: 2px solid var(--primary-blue);
+    border-bottom: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.cost-item {
+    color: #333;
+}
+
+.cost-amount {
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.discount-info {
+    background: rgba(96, 165, 250, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.discount-info h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.discount-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.discount-info li {
+    padding: 0.3rem 0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.pricing-note {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 10px;
+}
+
+.pricing-note p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .pricing-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .nav-container {
