@@ -122,15 +122,24 @@
     <!-- フッター（共通部品） -->
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/main.js"></script>
     <script>
+        // 共通コンポーネント読み込み
+        async function loadComponent(elementId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+            } catch (error) {
+                console.error(`コンポーネントの読み込みに失敗: ${componentPath}`, error);
+            }
+        }
+
         // FAQ アコーディオン機能
-        document.addEventListener('DOMContentLoaded', function() {
+        function initFAQ() {
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
                 
                 question.addEventListener('click', () => {
                     const isActive = item.classList.contains('active');
@@ -146,6 +155,16 @@
                     }
                 });
             });
+        }
+
+        // DOMContentLoaded時の初期化
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 共通コンポーネント読み込み
+            await loadComponent('header-placeholder', '../components/header.html');
+            await loadComponent('footer-placeholder', '../components/footer.html');
+            
+            // FAQ機能初期化
+            initFAQ();
         });
     </script>
 </body>
