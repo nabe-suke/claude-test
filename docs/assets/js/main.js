@@ -82,9 +82,9 @@ function initNavbarScroll() {
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(30, 58, 138, 0.95)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         }
     });
 }

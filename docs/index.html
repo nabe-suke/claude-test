@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude Web Design - メインページ</title>
+    <title>D`s tech - メインページ</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -13,25 +14,28 @@
     <!-- メインビジュアル（スライドショー） -->
     <section id="home" class="hero">
         <div class="slideshow-container">
-            <div class="slide active">
+            <div class="slide active" style="background-image: url('assets/images/slide/slide01.jpg');">
                 <div class="slide-content">
-                    <h1>モダンなWebデザイン</h1>
-                    <p>美しく機能的なウェブサイトを作成します</p>
-                    <a href="#services" class="cta-button">詳細を見る</a>
+                    <h1>「想い」のままを<br/>デザインに</h1>
+                    <p>最新技術を使い、チャットベースでデザイン修正が可能</p>
                 </div>
             </div>
-            <div class="slide">
+            <div class="slide" style="background-image: url('assets/images/slide/slide02.jpg');">
                 <div class="slide-content">
-                    <h1>レスポンシブ対応</h1>
+                    <h1>スマホ1台で<br/>いつ、どこからでも</h1>
+                    <p>難しい操作は一切無し！ニュアンスだけでデザイン可能</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/images/slide/slide03.jpg');">
+                <div class="slide-content">
+                    <h1>レスポンシブデザインは<br/>常識</h1>
                     <p>あらゆるデバイスで最適な表示を実現</p>
-                    <a href="#about" class="cta-button">もっと知る</a>
                 </div>
             </div>
-            <div class="slide">
+            <div class="slide" style="background-image: url('assets/images/slide/slide04.jpg');">
                 <div class="slide-content">
-                    <h1>高品質なコード</h1>
-                    <p>保守性と拡張性を重視した開発</p>
-                    <a href="#contact" class="cta-button">相談する</a>
+                    <h1>高品質なコードで<br/>SEO/MEO対策は完璧</h1>
+                    <p>検索結果に表示されやすくなるように自動で補完</p>
                 </div>
             </div>
         </div>
@@ -39,25 +43,39 @@
             <span class="indicator active" data-slide="0"></span>
             <span class="indicator" data-slide="1"></span>
             <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
         </div>
     </section>
 
     <!-- コンテンツセクション -->
     <section id="about" class="content-section">
         <div class="container">
-            <h2>私たちについて</h2>
+            <h2>私たちにお任せください！</h2>
             <div class="content-grid">
                 <div class="content-card">
                     <h3>🎨 デザイン</h3>
                     <p>ユーザー体験を重視したモダンなデザインを提供します</p>
                 </div>
                 <div class="content-card">
-                    <h3>💻 開発</h3>
+                    <h3>📝 開発</h3>
                     <p>最新技術を使用した高品質なWebサイトを構築します</p>
                 </div>
                 <div class="content-card">
                     <h3>📱 レスポンシブ</h3>
                     <p>すべてのデバイスで最適な表示を実現します</p>
+                </div>
+                <div class="content-card">
+                    <h3>🖥️ サーバ手配</h3>
+                    <p>サイト公開に必要な準備（レンタルサーバ、ドメイン）はすべて担います</p>
+                </div>
+                <div class="content-card">
+                    <h3>💰 定額制</h3>
+                    <p>どれだけサイトを更新しても毎月の費用は変わりません</p>
+                    <p>※通常 <span class="price">2万円</span>（税込）/月</p>
+                </div>
+                <div class="content-card">
+                    <h3>💬 相談</h3>
+                    <p>技術的な相談はなんでもお任せください</p>
                 </div>
             </div>
         </div>
@@ -65,16 +83,50 @@
 
     <section id="services" class="content-section">
         <div class="container">
-            <h2>サービス</h2>
-            <div class="content-grid">
-                <div class="content-card">
-                    <h3>🌐 Webサイト制作</h3>
-                    <p>企業サイトからECサイトまで幅広く対応</p>
+            <h2>お仕事の流れ</h2>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-content">
+                        <h3>💬 相談</h3>
+                        <p>ご要望やイメージをお聞かせください</p>
+                    </div>
+                    <div class="step-arrow"></div>
                 </div>
-                <div class="content-card">
-                    <h3>📊 UI/UXデザイン</h3>
-                    <p>使いやすさを追求したインターフェース設計</p>
+                <div class="workflow-step">
+                    <div class="step-content">
+                        <h3>🎨 サンプル作成</h3>
+                        <p>イメージに合わせたサンプルを作成</p>
+                    </div>
+                    <div class="step-arrow"></div>
                 </div>
+                <div class="workflow-step">
+                    <div class="step-content">
+                        <h3>📝 契約</h3>
+                        <p>サンプルをご確認いただき契約</p>
+                        <p>※通常 <span class="price">2万円</span>（税込）/月</p>
+                    </div>
+                    <div class="step-arrow"></div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-content">
+                        <h3>🛠️ 詳細仕様確定</h3>
+                        <p>機能やデザインの詳細を決定</p>
+                    </div>
+                    <div class="step-arrow"></div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-content">
+                        <h3>🚀 サイト公開</h3>
+                        <p>サイトを公開し運用開始</p>
+                    </div>
+                </div>
+            </div>
+            <div class="workflow-comment">
+                <p>※ 基本的に問い合わせから48時間以内に返事いたします。</p>
+                <p>※ サンプル作成までは最長1週間いただきますが無料で対応いたします。</p>
+                <p>※ 定額内ですべて（サーバ費用、ドメイン利用料、技術料）のサービスを提供いたします。</p>
+                <p>※ ご紹介制度アリ！紹介者も非紹介者もお得にご利用いただけます。</p>
+                <p>※ お気軽にご相談ください！</p>
             </div>
         </div>
     </section>
@@ -82,8 +134,8 @@
     <section id="contact" class="content-section">
         <div class="container">
             <h2>お問い合わせ</h2>
-            <div class="content-card" style="max-width: 600px; margin: 0 auto;">
-                <p>プロジェクトのご相談やお見積もりは、お気軽にお問い合わせください。</p>
+            <div class="content-card" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p>ご相談やお見積もりは、お気軽にお問い合わせください。</p>
                 <a href="mailto:info@claude-design.com" class="cta-button">メールで相談</a>
             </div>
         </div>
