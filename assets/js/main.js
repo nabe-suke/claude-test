@@ -128,16 +128,7 @@ function initCardAnimations() {
     });
 }
 
-// 共通コンポーネント読み込み
-async function loadComponent(elementId, componentPath) {
-    try {
-        const response = await fetch(componentPath);
-        const html = await response.text();
-        document.getElementById(elementId).innerHTML = html;
-    } catch (error) {
-        console.error(`コンポーネントの読み込みに失敗: ${componentPath}`, error);
-    }
-}
+
 
 // モバイルメニュー機能
 function initMobileMenu() {
@@ -161,13 +152,11 @@ function initMobileMenu() {
 }
 
 // DOMContentLoaded時の初期化
-document.addEventListener('DOMContentLoaded', async () => {
-    // 共通コンポーネント読み込み
-    await loadComponent('header-placeholder', 'components/header.html');
-    await loadComponent('footer-placeholder', 'components/footer.html');
-    
+document.addEventListener('DOMContentLoaded', () => {
     // スライドショー初期化
-    new Slideshow();
+    if (document.querySelector('.slideshow-container')) {
+        new Slideshow();
+    }
     
     // その他の機能初期化
     initSmoothScroll();
