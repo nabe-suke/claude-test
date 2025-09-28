@@ -126,6 +126,27 @@ async function loadComponent(elementId, componentPath) {
     }
 }
 
+// モバイルメニュー機能
+function initMobileMenu() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    if (!navToggle) return;
+    
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        });
+    });
+}
+
 // DOMContentLoaded時の初期化
 document.addEventListener('DOMContentLoaded', async () => {
     // 共通コンポーネント読み込み
@@ -139,4 +160,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSmoothScroll();
     initNavbarScroll();
     initCardAnimations();
+    initMobileMenu();
 });
