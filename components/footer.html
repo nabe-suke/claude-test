@@ -2,22 +2,48 @@
     <div class="footer-container">
         <div class="footer-content">
             <div class="footer-logo">
-                <a href="#home">
-                    <img src="/assets/images/logo.png" alt="D's tech" class="logo-img">
+                <a href="" id="footer-logo-link">
+                    <img src="" alt="D's tech" class="logo-img" id="footer-logo-img">
                 </a>
             </div>
             <p class="footer-description">茨城県阿見町でホームページ作成・ウェブデザインを低価格で提供</p>
             <p class="footer-description">最新技術を使って、モダンで美しいWebサイトを提供します</p>
         </div>
         <div class="footer-links">
-            <a href="#home">ホーム</a>
-            <a href="#about">概要</a>
-            <a href="#services">サービス</a>
-            <a href="pages/faq.html">FAQ</a>
-            <a href="#contact">お問い合わせ</a>
+            <a href="" id="footer-home">ホーム</a>
+            <a href="" id="footer-about">概要</a>
+            <a href="" id="footer-services">サービス</a>
+            <a href="" id="footer-faq">FAQ</a>
+            <a href="" id="footer-contact">お問い合わせ</a>
         </div>
     </div>
     <div class="footer-bottom">
         <p>&copy; 2025 D`s tech. All rights reserved.</p>
     </div>
 </footer>
+<script>
+// フッターのパス設定
+function setFooterPaths() {
+    // 現在のページの階層を判定
+    const isSubPage = window.location.pathname.includes('/pages/');
+    const basePath = isSubPage ? '../' : '';
+    
+    // ロゴパス設定
+    document.getElementById('footer-logo-link').href = basePath + 'index.html';
+    document.getElementById('footer-logo-img').src = basePath + 'assets/images/logo.png';
+    
+    // ナビゲーションパス設定
+    document.getElementById('footer-home').href = basePath + 'index.html#home';
+    document.getElementById('footer-about').href = basePath + 'index.html#about';
+    document.getElementById('footer-services').href = basePath + 'index.html#services';
+    document.getElementById('footer-faq').href = basePath + 'pages/faq.html';
+    document.getElementById('footer-contact').href = basePath + 'index.html#contact';
+}
+
+// DOM読み込み後に実行
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setFooterPaths);
+} else {
+    setFooterPaths();
+}
+</script>
