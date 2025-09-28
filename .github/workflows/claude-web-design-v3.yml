@@ -20,8 +20,6 @@ jobs:
       pull-requests: write
       issues: write
       actions: read
-      metadata: read
-      repository-projects: read
       
     steps:
       - name: Checkout repository
@@ -64,6 +62,9 @@ jobs:
           pr_title_prefix: "🏢 D's tech: "
           auto_merge: false
           branch_name: ${{ env.BRANCH_NAME }}
+          
+          # D's tech ホームページ制作サイト専用カスタム指示
+          custom_instructions: |
           
       - name: Link PR to Issue
         if: success()
@@ -124,9 +125,6 @@ jobs:
               issue_number: ${{ github.event.issue.number }},
               labels: ['❌ claude-failed']
             });
-          
-          # D's tech ホームページ制作サイト専用カスタム指示
-          custom_instructions: |
             # 🏢 D's tech - 茨城県阿見町のホームページ制作サイト専用アシスタント
             
             あなたは茨城県阿見町のホームページ制作事業「D's tech」のWebサイト専門開発者です。
