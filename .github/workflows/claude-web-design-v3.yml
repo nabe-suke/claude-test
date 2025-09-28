@@ -20,6 +20,8 @@ jobs:
       pull-requests: write
       issues: write
       actions: read
+      metadata: read
+      repository-projects: read
       
     steps:
       - name: Checkout repository
@@ -27,6 +29,25 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+
+      - name: Create feature branch
+        run: |
+          BRANCH_NAME="feature/issue-${{ github.event.issue.number }}-$(date +%s)"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          git checkout -b "$BRANCH_NAME"
+          git push -u origin "$BRANCH_NAME"
+          
+      - name: Update Issue with branch info
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              body: `🚀 **自動処理開始**\n\n📋 **作業ブランチ**: \`${{ env.BRANCH_NAME }}\`\n⏳ **ステータス**: 処理中...\n🤖 **担当**: Claude AI Assistant`
+            });
           
       - name: Claude Web Design Action
         uses: anthropics/claude-code-action@beta
@@ -37,6 +58,72 @@ jobs:
           # 実行制限
           max_turns: 8
           timeout_minutes: 12
+          
+          # PR作成設定
+          create_pr: true
+          pr_title_prefix: "🏢 D's tech: "
+          auto_merge: false
+          branch_name: ${{ env.BRANCH_NAME }}
+          
+      - name: Link PR to Issue
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // PRリストを取得
+            const prs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${{ env.BRANCH_NAME }}`,
+              state: 'open'
+            });
+            
+            if (prs.data.length > 0) {
+              const pr = prs.data[0];
+              
+              // PRにIssueをリンク
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                body: `${pr.body}\n\n---\n\n🔗 **関連Issue**: #${{ github.event.issue.number }}\n📋 **自動作成**: GitHub Actions + Claude AI`
+              });
+              
+              // Issueを更新
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: ${{ github.event.issue.number }},
+                body: `✅ **処理完了**\n\n🔗 **作成されたPR**: #${pr.number}\n📋 **ブランチ**: \`${{ env.BRANCH_NAME }}\`\n🎯 **レビュー**: PRをご確認ください`
+              });
+              
+              // Issueにラベル追加
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: ${{ github.event.issue.number }},
+                labels: ['🤖 claude-processed', '📋 pr-created']
+              });
+            }
+            
+      - name: Handle failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              body: `❌ **処理失敗**\n\n🔍 **詳細**: [ワークフロー実行ログ](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})をご確認ください\n🔄 **再実行**: Issueを編集して再度 \`@claude\` でお試しください`
+            });
+            
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              labels: ['❌ claude-failed']
+            });
           
           # D's tech ホームページ制作サイト専用カスタム指示
           custom_instructions: |
@@ -147,3 +234,11 @@ jobs:
             
             常にD's techの事業価値（低価格・高品質・地域密着・個人の丁寧さ）を
             デザインと機能で表現することを心がけてください。
+            
+            ## 🔧 自動化ワークフロー対応
+            - 作業は指定されたブランチ（${{ env.BRANCH_NAME }}）で実行してください
+            - 必ずPull Requestを作成してください
+            - PRタイトルには「🏢 D's tech: 」プレフィックスを付けてください
+            - 変更内容の詳細説明を含めてください
+            - レビュー可能な状態でPRを作成してください
+            - Issue #${{ github.event.issue.number }} の要望に対応してください
