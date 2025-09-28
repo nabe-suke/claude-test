@@ -127,13 +127,7 @@ jobs:
             git commit --allow-empty -m "🏢 D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 (空コミット)"
           else
             git add .
-            git commit -m "🏢 D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応
-          
-          - サンプルページを作成
-          - 茨城県阿見町のホームページ制作サービスに対応
-          - 料金: 月額1万円（税込）の情報を含む
-          
-          Closes #${{ env.ISSUE_NUMBER }}"
+            git commit -m "🏢 D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 - サンプルページを作成 - 茨城県阿見町のホームページ制作サービスに対応 - 料金: 月額1万円（税込）の情報を含む - Closes #${{ env.ISSUE_NUMBER }}"
           fi
           git push origin ${{ env.BRANCH_NAME }}
 
