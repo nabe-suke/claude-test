@@ -45,7 +45,7 @@ class Slideshow {
     startAutoSlide() {
         this.slideInterval = setInterval(() => {
             this.nextSlide();
-        }, 5000);
+        }, 3000);
     }
     
     stopAutoSlide() {
