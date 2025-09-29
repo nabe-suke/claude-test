@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D's tech | ウェブサイト制作・デザイン</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #0056b3;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #007bff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ff 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #007bff;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            background-color: white;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin: 1.5rem 0;
+            font-weight: bold;
+        }
+        
+        .pricing-features {
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info h3 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .contact-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        .footer-section p,
+        .footer-section address {
+            margin-bottom: 1rem;
+            font-style: normal;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #555;
+        }
+        
+        .footer-quote {
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">D's tech</div>
+            <nav>
+                <button class="mobile-menu-btn">☰</button>
+                <ul>
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="#services">サービス</a></li>
+                    <li><a href="#pricing">料金</a></li>
+                    <li><a href="#contact">���問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>D's tech</h1>
+            <p>茨城県阿見町を拠点にウェブサイト制作・デザインサービスを提供しています。個人事業主ならではの丁寧なサポートで、お客様のビジネスの成長をお手伝いします。</p>
+            <a href="#contact" class="cta-button">お問い合わせ</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">サービス内容</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>ウェブサイト制作</h3>
+                    <p>お客様のニーズに合わせたカスタムウェブサイトを制作します。スマートフォン対応のレスポンシブデザインで、どのデバイスでも最適な表示を実現します。</p>
+                </div>
+                <div class="service-card">
+                    <h3>ウェブデザイン</h3>
+                    <p>使いやすく魅力的なデザインで、訪問者の印象に残るウェブサイトを作成します。ブラ���ドイメージに合わせたオリジナルデザインを提供します。</p>
+                </div>
+                <div class="service-card">
+                    <h3>更新サポート</h3>
+                    <p>ウェブサイトの更新や管理をサポート。コンテンツの追加や変更、セキュリティ対策など、運用面でのサポートも充実しています。</p>
+                </div>
+                <div class="service-card">
+                    <h3>レスポンシブ対応</h3>
+                    <p>スマートフォン、タブレット、PCなど、あらゆるデバイスで最適に表示されるレスポンシブデザインを標準対応しています。</p>
+                </div>
+                <div class="service-card">
+                    <h3>基本的なSEO対策</h3>
+                    <p>検索エンジンで見つけてもらうための基本的なSEO対策を実施。ビジネスの可視性を高め、より多くのお客様にアプローチします。</p>
+                </div>
+                <div class="service-card">
+                    <h3>丁寧なサポート</h3>
+                    <p>個人事業主ならではの丁寧なサポートを提供。お客様との密なコミュニケーションを大切にし、ご要望にきめ細かく対応し��す。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">料金プラン</h2>
+            <div class="pricing-card">
+                <h3>基本プラン</h3>
+                <div class="price">月額1万円（税込）</div>
+                <p>ウェブサイト制作から運用まで、すべて含んだシンプルな料金体系です。</p>
+                <ul class="pricing-features">
+                    <li>ウェブサイト制作</li>
+                    <li>無制限の更新サポート</li>
+                    <li>レスポンシブデザイン対応</li>
+                    <li>基本的なSEO対策</li>
+                    <li>専門的なサポート</li>
+                </ul>
+                <p>※別途サーバー費用（500円〜）、ドメイン費用（350円〜）が必要となります。</p>
+                <p>※更新依頼のない月は自動的に割引適用されます。</p>
+                <p>※ご紹介割引もあります。詳細はお問い合わせください。</p>
+                <a href="#contact" class="cta-button">お問い合わせ</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>連絡先情報</h3>
+                    <p>メール: info@claude-design.com</p>
+                    <p>営業時間: 平日 09:00-17:00</p>
+                    <p>対応時間: 48時間以内</p>
+                    <p>対応エリア: 茨城県阿見町（全国対応可能）</p>
+                    <p>まずはお気軽にお問い合わせください。ご要望に合わせたプランをご提案いたします。</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">お名前</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">お問い合わせ内容</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit">送信する</button>
+                    </form>
