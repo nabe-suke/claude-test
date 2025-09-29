@@ -74,7 +74,7 @@ jobs:
               body: `**自動処理開始**\n\n**作業ブランチ**: \`${{ env.BRANCH_NAME }}\`\n**ステータス**: コード変更中...\n**担当**: Claude AI Assistant`
             });
 
-      - name: Process Issue request
+      - name: Generate website with Claude API
         uses: actions/github-script@v7
         with:
           script: |
@@ -85,65 +85,26 @@ jobs:
               issue_number: issueNumber
             });
             
+            // Issue情報を環境変数に設定
+            const fs = require('fs');
+            fs.appendFileSync(process.env.GITHUB_ENV, `ISSUE_TITLE=${issue.data.title}\n`);
+            fs.appendFileSync(process.env.GITHUB_ENV, `ISSUE_BODY=${issue.data.body.replace(/\n/g, '\\n')}\n`);
+            
             console.log(`Issue #${issueNumber}: ${issue.data.title}`);
-            console.log('ワークフローテスト完了 - 実際の実装ではClaude APIを呼び出してコードを生成します');
+            console.log('Claude APIでウェブサイトを生成します...');
 
-      - name: Create preview HTML
+      - name: Call Claude API to generate website
         run: |
-          mkdir -p preview
-          cat > preview/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="ja">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>D's tech - プレビュー (Issue #${{ env.ISSUE_NUMBER }})</title>
-              <style>
-                  body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-                  .container { max-width: 800px; margin: 0 auto; }
-                  .header { background: #f4f4f4; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
-                  .status { background: #d4edda; padding: 15px; border-radius: 5px; margin: 20px 0; }
-                  .info { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 20px 0; }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <div class="header">
-                      <h1>D's tech - プレビューサイト</h1>
-                      <p>Issue #${{ env.ISSUE_NUMBER }} の対応プレビュー</p>
-                  </div>
-                  
-                  <div class="status">
-                      <h2>✅ プレビュー正常表示</h2>
-                      <p>GitHub Pagesが正しく動作しています。</p>
-                  </div>
-                  
-                  <div class="info">
-                      <h3>D's tech について</h3>
-                      <ul>
-                          <li><strong>事業地</strong>: 茨城県阿見町</li>
-                          <li><strong>料金</strong>: 月額1万円（税込）</li>
-                          <li><strong>特徴</strong>: 個人事業主ならではの丁寧なサポート</li>
-                      </ul>
-                  </div>
-                  
-                  <div class="info">
-                      <h3>技術情報</h3>
-                      <ul>
-                          <li><strong>ブランチ</strong>: ${{ env.BRANCH_NAME }}</li>
-                          <li><strong>デプロイ時刻</strong>: $(date)</li>
-                          <li><strong>Issue番号</strong>: #${{ env.ISSUE_NUMBER }}</li>
-                      </ul>
-                  </div>
-              </div>
-          </body>
-          </html>
-          EOF
+          node .github/scripts/claude-api.js
+        env:
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          ISSUE_TITLE: ${{ env.ISSUE_TITLE }}
+          ISSUE_BODY: ${{ env.ISSUE_BODY }}
 
-      - name: Create empty commit
+      - name: Commit generated website
         run: |
           git add preview/
-          git commit -m "D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 - プレビューHTML作成"
+          git commit -m "D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 - Claude AIによるウェブサイト生成"
           git push origin ${{ env.BRANCH_NAME }}
 
       - name: Create Pull Request
@@ -166,7 +127,7 @@ jobs:
                 title: `D's tech: Issue #${issueNumber} に対応`,
                 head: '${{ env.BRANCH_NAME }}',
                 base: defaultBranch,
-                body: `## 概要\nIssue #${issueNumber} の要望に対応したワークフローテストです。\n\n## テスト内容\n- GitHub Actionsワークフローの動作確認\n- IssueからPR自動作成のテスト\n- GitHub Pagesプレビュー機能の検証\n- D's techサイト専用設定の検証\n\n## プレビュー確認\nプレビューURLがコメントで投稿されます。内容を確認後、問題なければマージしてください。\n\n## 次のステップ\n実際の実装ではClaude APIを呼び出してコードを生成します。\n\n## 関連Issue\nCloses #${issueNumber}\n\n---\n**自動作成**: GitHub Actions + Claude AI Assistant`
+                body: `## 概要\nIssue #${issueNumber} の要望に対応し、Claude AIがウェブサイトを自動生成しました。\n\n## 生成内容\n- Claude API (claude-3-5-sonnet-20241022) による完全自動生成\n- レスポンシブデザイン対応\n- D's tech情報を含む\n- 要望に応じたカスタム機能\n\n## プレビュー確認\nプレビューURLで生成されたサイトをご確認ください。\n問題なければマージしてください。\n\n## 関連Issue\nCloses #${issueNumber}\n\n---\n**自動生成**: Claude AI + GitHub Actions`
               });
               
               // PR番号を環境変数に保存
