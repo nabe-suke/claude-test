@@ -94,10 +94,10 @@ HTMLコードのみを出力してください（説明文は不要）：
 async function main() {
   const issueTitle = process.env.ISSUE_TITLE;
   const issueBody = process.env.ISSUE_BODY;
-  const apiKey = process.env.CLAUDE_API_KEY;
+  const apiKey = process.env.ANTHROPIC_API_KEY;
 
   if (!apiKey) {
-    throw new Error('CLAUDE_API_KEY environment variable is required');
+    throw new Error('ANTHROPIC_API_KEY environment variable is required');
   }
 
   console.log('Claude APIを呼び出してウェブサイトを生成中...');
