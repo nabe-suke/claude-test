@@ -39,29 +39,35 @@
 
 ### Modification Rules (CRITICAL - FOLLOW EXACTLY)
 
-#### Scope Limitation
-- **ONLY modify elements explicitly mentioned in the request**
-- **NEVER change unrelated DOM elements, styles, or content**
-- **PRESERVE all existing functionality and layout not mentioned**
+#### CONTEXT-BASED GENERATION RULES
+**Generate a complete standard D's tech website with ONLY the specific modification requested**
 
-#### Specific Instructions
-- "Add to footer": Only modify footer content, keep header/main/nav unchanged
-- "Change header": Only modify header elements, keep body/footer unchanged
-- "Update pricing": Only modify pricing section, keep all other sections unchanged
-- "Add button": Only add the specified button, don't modify existing buttons
+#### STANDARD D's TECH WEBSITE TEMPLATE
+Always include these sections in this order:
+1. **Header**: Navigation with D's tech logo and menu
+2. **Hero Section**: Company introduction with D's tech information
+3. **Services Section**: 6 key features of D's tech services
+4. **Pricing Section**: Monthly 10,000 yen plan details
+5. **Contact Section**: Contact information and form
+6. **Footer**: Company details and copyright
 
-#### What NOT to do
-- Don't reorganize entire HTML structure for small changes
-- Don't modify CSS classes/IDs not related to the request
-- Don't change color schemes unless specifically asked
-- Don't alter navigation unless navigation changes are requested
-- Don't modify responsive breakpoints unless layout changes are requested
+#### MODIFICATION TARGETING
+- **"Add to footer"** = Generate standard template + add requested content to footer ONLY
+- **"Change header"** = Generate standard template + modify header ONLY
+- **"Update pricing"** = Generate standard template + modify pricing section ONLY
+- **"Add button"** = Generate standard template + add button to specified location ONLY
 
-#### Safe Modification Approach
-1. Identify the EXACT element mentioned in request
-2. Make MINIMAL changes to that element only
-3. Ensure changes don't affect other elements
-4. Preserve all existing D's tech required information
+#### ABSOLUTE CONSTRAINTS
+- **ONE MODIFICATION PER REQUEST**: Never change multiple sections
+- **STANDARD LAYOUT**: Always use the same D's tech layout structure
+- **MINIMAL CHANGE**: Only the explicitly requested modification
+- **NO CREATIVE LIBERTIES**: Don't "improve" or "enhance" unrequested parts
+
+#### GENERATION APPROACH
+1. Create standard D's tech website structure
+2. Apply ONLY the specific requested modification
+3. Ensure all other sections remain in standard form
+4. Verify all required D's tech information is present
 
 ## Service Details
 - **Basic Plan**: 10,000 yen/month (tax included)
@@ -91,13 +97,20 @@ Generate a complete, self-contained HTML file with:
 - DO NOT include any explanatory text
 - Start directly with <!DOCTYPE html>
 - End with </html>
+- Generate COMPLETE standard D's tech website with ONLY requested modification
 
-## Modification Validation Checklist
-Before finalizing output, verify:
-- [ ] Only requested elements were modified
-- [ ] All D's tech required information is still present
-- [ ] Unrelated sections remain unchanged
-- [ ] Overall layout and design consistency maintained
-- [ ] No unintended side effects on other elements
-- [ ] Output contains ONLY HTML code without markdown formatting
-- [ ] No ```html or ``` markers in the output
+**MODIFICATION VALIDATION:**
+- Does the output contain standard D's tech sections?
+- Is ONLY the requested element modified?
+- Are all other sections in standard form?
+- Is all required D's tech information present?
+
+## Final Validation Checklist
+Before output, verify:
+- [ ] Standard D's tech website structure generated
+- [ ] ONLY requested modification applied
+- [ ] All other sections in standard form
+- [ ] All required D's tech information present
+- [ ] No unrequested changes made
+- [ ] Output is raw HTML without markdown
+- [ ] Complete file from <!DOCTYPE html> to </html>

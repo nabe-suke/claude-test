@@ -75,7 +75,7 @@ async function generateWebsite(issueTitle, issueBody, claudeSpecs, apiKey) {
   const cleanBody = (issueBody || '').replace(/\\n/g, ' ').replace(/[\r\n\t]/g, ' ').replace(/\s+/g, ' ').trim();
   const specs = claudeSpecs || '';
   
-  const prompt = `You are a web designer for D's tech. Follow the specifications below and create a complete HTML website.
+  const prompt = `You are a web designer for D's tech. Follow the specifications below strictly.
 
 ## Project Specifications
 ${specs}
@@ -84,13 +84,15 @@ ${specs}
 Title: ${cleanTitle}
 Content: ${cleanBody}
 
-## Instructions
-- Follow all rules in the "Claude AI 自動生成ルール" section
-- Include all required D's tech information
-- Create a complete, self-contained HTML file
-- Apply the modification rules appropriately
+## ABSOLUTE RULES - FOLLOW EXACTLY
+- If request mentions ONLY "footer": Create standard D's tech website with the footer modification ONLY
+- If request mentions ONLY "header": Create standard D's tech website with the header modification ONLY  
+- If request mentions ONLY "pricing": Create standard D's tech website with the pricing modification ONLY
+- NEVER modify multiple sections unless explicitly requested
+- ALWAYS include all required D's tech information in standard layout
+- Make MINIMAL changes - only what is specifically requested
 
-Output only HTML code (no explanations needed):`;
+Output complete HTML file with ONLY the requested modifications:`;
 
   try {
     const rawContent = await callClaudeAPI(prompt, apiKey);
