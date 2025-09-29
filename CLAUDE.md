@@ -1,116 +1,55 @@
-# D's tech Website Specifications
+You will be analyzing a GitHub repository to understand its structure and files, then proposing minimal-cost modifications based on a specific request. This is a complex task that requires systematic analysis.
 
-## Company Information
-- **Company Name**: D's tech
-- **Location**: Ami-machi, Ibaraki Prefecture, Japan
-- **Service**: Website creation and web design
-- **Pricing**: 10,000 yen per month (tax included)
-- **Feature**: Careful support unique to individual business owners
-- **Target Area**: Ami-machi, Ibaraki (nationwide support available)
+<repository>
+{{GITHUB_REPOSITORY}}
+</repository>
 
-## HTML Generation Rules
+<modification_request>
+{{MODIFICATION_REQUEST}}
+</modification_request>
 
-### Required Elements (MUST INCLUDE)
-- Company name "D's tech" prominently displayed
-- Location "茨城県阿見町" (Ami-machi, Ibaraki)
-- Pricing "月額1万円（税込）" (10,000 yen/month tax included)
-- Feature "個人事業主ならではの丁寧なサポート" (careful individual support)
+Follow these steps to complete the analysis and modification:
 
-### Technical Requirements
-- Complete HTML file with internal CSS and JavaScript only
-- No external libraries, CDNs, or image files
-- Responsive design (mobile-first)
-- Semantic HTML5 tags
-- Accessibility attributes (alt, proper headings)
+1. **Repository Structure Analysis**: First, examine all static assets and files in the GitHub repository. Map out the file relationships, dependencies, and overall architecture.
 
-### Design Guidelines
-- Color scheme: Blue tones (#007bff, #0056b3)
-- Typography: System fonts (Arial, sans-serif)
-- Layout: Card-based, CSS Grid/Flexbox
-- Animations: Subtle and functional only
+2. **File Content Analysis**: Analyze the contents of each file to understand:
 
-### Content Structure
-- Header with navigation
-- Hero section with company introduction
-- Services overview (6 key features)
-- Pricing information
-- Contact information
-- Footer with company details
+   - Data structures and schemas used
+   - Common patterns across files
+   - Coding conventions and architectural patterns
+   - Shared components or utilities
 
-### Modification Rules (CRITICAL - FOLLOW EXACTLY)
+3. **Pattern Recognition**: Identify commonalities between the files you've analyzed and any previously referenced file groups. Look for:
 
-#### CONTEXT-BASED GENERATION RULES
-**Generate a complete standard D's tech website with ONLY the specific modification requested**
+   - Similar data structures
+   - Repeated architectural patterns
+   - Common naming conventions
+   - Shared functionality
 
-#### STANDARD D's TECH WEBSITE TEMPLATE
-Always include these sections in this order:
-1. **Header**: Navigation with D's tech logo and menu
-2. **Hero Section**: Company introduction with D's tech information
-3. **Services Section**: 6 key features of D's tech services
-4. **Pricing Section**: Monthly 10,000 yen plan details
-5. **Contact Section**: Contact information and form
-6. **Footer**: Company details and copyright
+4. **Modification Planning**: Based on your analysis, interpret the modification request and plan changes that:
+   - Require minimal modification cost
+   - Maintain consistency with existing patterns
+   - Preserve the current architecture where possible
+   - Follow established conventions in the codebase
 
-#### MODIFICATION TARGETING
-- **"Add to footer"** = Generate standard template + add requested content to footer ONLY
-- **"Change header"** = Generate standard template + modify header ONLY
-- **"Update pricing"** = Generate standard template + modify pricing section ONLY
-- **"Add button"** = Generate standard template + add button to specified location ONLY
+Use the following format for your analysis. First, work through your analysis in a scratchpad, then provide your final structured response.
 
-#### ABSOLUTE CONSTRAINTS
-- **ONE MODIFICATION PER REQUEST**: Never change multiple sections
-- **STANDARD LAYOUT**: Always use the same D's tech layout structure
-- **MINIMAL CHANGE**: Only the explicitly requested modification
-- **NO CREATIVE LIBERTIES**: Don't "improve" or "enhance" unrequested parts
+<scratchpad>
+[Use this space to work through your repository analysis, identify patterns, and plan modifications step by step. This will not be shown in the final output.]
+</scratchpad>
 
-#### GENERATION APPROACH
-1. Create standard D's tech website structure
-2. Apply ONLY the specific requested modification
-3. Ensure all other sections remain in standard form
-4. Verify all required D's tech information is present
+Your final response should include:
 
-## Service Details
-- **Basic Plan**: 10,000 yen/month (tax included)
-- **Additional Costs**: Server (500 yen~), Domain (350 yen~)
-- **Included Services**: Website creation, unlimited updates, responsive design, basic SEO, support
-- **Discount System**: Automatic discount for months without inquiries, referral discounts
+1. **Repository Structure Summary**: A clear overview of the repository organization and key file relationships
 
-## Contact Information
-- **Email**: info@claude-design.com
-- **Hours**: Weekdays 09:00-17:00
-- **Response Time**: Within 48 hours
-- **Service Area**: Ami-machi, Ibaraki (nationwide available)
+2. **Identified Patterns**: Common structures, patterns, and conventions found across the files
 
-## Output Format
-Generate a complete, self-contained HTML file with:
-1. DOCTYPE declaration
-2. HTML structure with head and body
-3. Internal CSS in <style> tags
-4. Internal JavaScript in <script> tags if needed
-5. All D's tech required information
-6. Responsive design for mobile/tablet/desktop
-7. Professional appearance suitable for a web design business
+3. **Commonalities with Previous References**: How the identified structures relate to previously referenced file groups
 
-**CRITICAL OUTPUT RULES:**
-- Output ONLY raw HTML code
-- DO NOT use markdown code blocks (```html or ```)
-- DO NOT include any explanatory text
-- Start directly with <!DOCTYPE html>
-- End with </html>
-- Generate COMPLETE standard D's tech website with ONLY requested modification
+4. **Modification Plan**: Specific, minimal-cost changes needed to fulfill the modification request, including:
+   - Which files need to be modified
+   - What changes are required
+   - Why this approach minimizes modification cost
+   - How the changes maintain consistency with existing patterns
 
-**MODIFICATION VALIDATION:**
-- Does the output contain standard D's tech sections?
-- Is ONLY the requested element modified?
-- Are all other sections in standard form?
-- Is all required D's tech information present?
-
-## Final Validation Checklist
-Before output, verify:
-- [ ] Standard D's tech website structure generated
-- [ ] ONLY requested modification applied
-- [ ] All other sections in standard form
-- [ ] All required D's tech information present
-- [ ] No unrequested changes made
-- [ ] Output is raw HTML without markdown
-- [ ] Complete file from <!DOCTYPE html> to </html>
+Format your final response with clear headings for each section. Focus on providing actionable, specific recommendations rather than general observations.

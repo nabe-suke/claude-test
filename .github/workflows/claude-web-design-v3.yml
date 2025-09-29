@@ -107,6 +107,8 @@ jobs:
           ISSUE_TITLE: ${{ env.ISSUE_TITLE }}
           ISSUE_BODY: ${{ env.ISSUE_BODY }}
           CLAUDE_SPECS_B64: ${{ env.CLAUDE_SPECS_B64 }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          MODIFICATION_REQUEST: ${{ env.ISSUE_BODY }}
 
       - name: Commit generated website
         run: |

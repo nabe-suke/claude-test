@@ -140,6 +140,15 @@ async function main() {
   if (claudeSpecsB64) {
     try {
       claudeSpecs = Buffer.from(claudeSpecsB64, 'base64').toString('utf8');
+      
+      // CLAUDE.md内の変数を置換
+      const githubRepository = process.env.GITHUB_REPOSITORY || '';
+      const modificationRequest = process.env.MODIFICATION_REQUEST || cleanBody;
+      
+      claudeSpecs = claudeSpecs.replace(/{{GITHUB_REPOSITORY}}/g, githubRepository);
+      claudeSpecs = claudeSpecs.replace(/{{MODIFICATION_REQUEST}}/g, modificationRequest);
+      
+      console.log('CLAUDE.md変数置換完了');
     } catch (error) {
       console.error('CLAUDE.mdデコードエラー:', error);
     }
