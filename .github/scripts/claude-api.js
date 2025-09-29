@@ -69,29 +69,26 @@ async function callClaudeAPI(prompt, apiKey) {
   });
 }
 
-async function generateWebsite(issueTitle, issueBody, apiKey) {
+async function generateWebsite(issueTitle, issueBody, claudeSpecs, apiKey) {
   // 文字列を安全にクリーニング
   const cleanTitle = (issueTitle || '').replace(/[\r\n\t]/g, ' ').replace(/\s+/g, ' ').trim();
   const cleanBody = (issueBody || '').replace(/\\n/g, ' ').replace(/[\r\n\t]/g, ' ').replace(/\s+/g, ' ').trim();
+  const specs = claudeSpecs || '';
   
-  const prompt = `You are a web designer for D's tech. Create a complete HTML website based on the following requirements.
+  const prompt = `You are a web designer for D's tech. Follow the specifications below and create a complete HTML website.
 
-## Company Information
-- Company: D's tech
-- Location: Ami-machi, Ibaraki Prefecture
-- Price: 10,000 yen per month (tax included)
-- Feature: Careful support unique to individual business owners
+## Project Specifications
+${specs}
 
-## Requirements
+## Current Request
 Title: ${cleanTitle}
 Content: ${cleanBody}
 
-## Output Requirements
-- Complete HTML (including CSS and JavaScript)
-- Responsive design
-- Modern and beautiful design
-- Include D's tech information appropriately
-- Implement functions according to requirements
+## Instructions
+- Follow all rules in the "Claude AI 自動生成ルール" section
+- Include all required D's tech information
+- Create a complete, self-contained HTML file
+- Apply the modification rules appropriately
 
 Output only HTML code (no explanations needed):`;
 
@@ -108,11 +105,13 @@ Output only HTML code (no explanations needed):`;
 async function main() {
   const issueTitle = process.env.ISSUE_TITLE;
   const issueBody = process.env.ISSUE_BODY;
+  const claudeSpecs = process.env.CLAUDE_SPECS;
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
   console.log('Environment variables:');
   console.log('ISSUE_TITLE:', JSON.stringify(issueTitle));
   console.log('ISSUE_BODY:', JSON.stringify(issueBody));
+  console.log('CLAUDE_SPECS present:', !!claudeSpecs);
   console.log('API_KEY present:', !!apiKey);
 
   if (!apiKey) {
@@ -120,7 +119,7 @@ async function main() {
   }
 
   console.log('Claude APIを呼び出してウェブサイトを生成中...');
-  const htmlContent = await generateWebsite(issueTitle, issueBody, apiKey);
+  const htmlContent = await generateWebsite(issueTitle, issueBody, claudeSpecs, apiKey);
   
   // HTMLファイルを保存
   fs.mkdirSync('preview', { recursive: true });
