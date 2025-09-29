@@ -20,6 +20,8 @@ jobs:
       pull-requests: write
       issues: write
       actions: read
+      pages: write
+      id-token: write
       
     steps:
       - name: Checkout repository
@@ -111,7 +113,7 @@ jobs:
                 title: `D's tech: Issue #${issueNumber} に対応`,
                 head: '${{ env.BRANCH_NAME }}',
                 base: defaultBranch,
-                body: `## 概要\nIssue #${issueNumber} の要望に対応したワークフローテストです。\n\n## テスト内容\n- GitHub Actionsワークフローの動作確認\n- IssueからPR自動作成のテスト\n- D's techサイト専用設定の検証\n\n## 次のステップ\n実際の実装ではClaude APIを呼び出してコードを生成します。\n\n## 関連Issue\nCloses #${issueNumber}\n\n---\n**自動作成**: GitHub Actions + Claude AI Assistant`
+                body: `## 概要\nIssue #${issueNumber} の要望に対応したワークフローテストです。\n\n## テスト内容\n- GitHub Actionsワークフローの動作確認\n- IssueからPR自動作成のテスト\n- GitHub Pagesプレビュー機能の検証\n- D's techサイト専用設定の検証\n\n## プレビュー確認\nプレビューURLがコメントで投稿されます。内容を確認後、問題なければマージしてください。\n\n## 次のステップ\n実際の実装ではClaude APIを呼び出してコードを生成します。\n\n## 関連Issue\nCloses #${issueNumber}\n\n---\n**自動作成**: GitHub Actions + Claude AI Assistant`
               });
               
               // PR番号を環境変数に保存
@@ -124,18 +126,38 @@ jobs:
               throw error;
             }
 
-      - name: Update Issue with completion
+      - name: Deploy PR Preview to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          destination_dir: pr-${{ env.PR_NUMBER }}
+          keep_files: true
+
+      - name: Update Issue with completion and preview
         if: success()
         uses: actions/github-script@v7
         with:
           script: |
             const issueNumber = parseInt(process.env.ISSUE_NUMBER);
+            const prNumber = process.env.PR_NUMBER;
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${prNumber}/`;
+            
             // Issueを更新
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: `**処理完了**\n\n**作成されたPR**: #${{ env.PR_NUMBER }}\n**ブランチ**: \`${{ env.BRANCH_NAME }}\`\n**レビュー**: PRをご確認ください\n\n---\n\n**D's tech 情報**\n- 事業地: 茨城県阿見町\n- 料金: 月額1万円（税込）\n- 特徴: 個人事業主ならではの丁寧なサポート`
+              body: `**処理完了**\n\n**作成されたPR**: #${prNumber}\n**ブランチ**: \`${{ env.BRANCH_NAME }}\`\n\n## プレビューサイト\n**URL**: ${previewUrl}\n\nプレビューで内容を確認後、問題なければPRをマージしてください。\n\n---\n\n**D's tech 情報**\n- 事業地: 茨城県阿見町\n- 料金: 月額1万円（税込）\n- 特徴: 個人事業主ならではの丁寧なサポート`
+            });
+            
+            // PRにもプレビューリンクを追加
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: parseInt(prNumber),
+              body: `## プレビューサイト\n\n**URL**: ${previewUrl}\n\nプレビューで内容を確認し、問題なければマージしてください。\n\n**D's tech**: 茨城県阿見町のホームページ制作（月額1万円）`
             });
             
             // Issueにラベル追加
@@ -144,7 +166,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issueNumber,
-                labels: ['claude-processed', 'pr-created']
+                labels: ['claude-processed', 'pr-created', 'preview-ready']
               });
             } catch (error) {
               console.log('ラベル追加に失敗しましたが、処理を継続します');
