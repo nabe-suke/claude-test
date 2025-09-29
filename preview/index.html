@@ -1,46 +1,501 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D's tech - プレビュー (Issue #26)</title>
+    <meta name="description" content="茨城県阿見町を拠点とする個人事業主によるホームページ制作・ウェブデザインサービス。月額1万円の定額制で丁寧なサポートを提供します。">
+    <title>D's tech - 茨城県阿見町のホームページ制作サイト</title>
+    <link rel="icon" href="favicon.ico">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { background: #f4f4f4; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
-        .status { background: #d4edda; padding: 15px; border-radius: 5px; margin: 20px 0; }
-        .info { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 20px 0; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>D's tech - プレビューサイト</h1>
-            <p>Issue #26 の対応プレビュー</p>
-        </div>
+        /* リセットCSS */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         
-        <div class="status">
-            <h2>✅ プレビュー正常表示</h2>
-            <p>GitHub Pagesが正しく動作しています。</p>
-        </div>
+        /* 基本スタイル */
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --white: #ffffff;
+            --gray: #e9ecef;
+            --transition: all 0.3s ease;
+        }
         
-        <div class="info">
-            <h3>D's tech について</h3>
-            <ul>
-                <li><strong>事業地</strong>: 茨城県阿見町</li>
-                <li><strong>料金</strong>: 月額1万円（税込）</li>
-                <li><strong>特徴</strong>: 個人事業主ならではの丁寧なサポート</li>
-            </ul>
-        </div>
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
         
-        <div class="info">
-            <h3>技術情報</h3>
-            <ul>
-                <li><strong>ブランチ</strong>: feature/issue-26-1759106218</li>
-                <li><strong>デプロイ時刻</strong>: $(date)</li>
-                <li><strong>Issue番号</strong>: #26</li>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+        body {
+            font-family: Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul, ol {
+            list-style: none;
+        }
+        
+        button, .btn {
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--primary-dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 20px 0;
+        }
+        
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--primary-dark);
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin-bottom: 5px;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.8) 0%, rgba(0, 123, 255, 0.8) 100%);
+            color: var(--white);
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-location {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+        }
+        
+        .hero-price {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: var(--warning);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-btn {
+            background: var(--white);
+            color: var(--primary);
+            font-weight: bold;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: var(--primary);
+        }
+        
+        /* 特徴セクション */
+        .features {
+            background-color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .feature-desc {
+            color: var(--secondary);
+        }
+        
+        /* サービスセクション */
+        .services {
+            background-color: var(--light);
+        }
+        
+        .service-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .service-step {
+            display: flex;
+            gap: 20px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        /* 料金セクション */
+        .pricing {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .pricing-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .price-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .price-amount {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .pricing-features {
+            padding: 30px;
+        }
+        
+        .pricing-features ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features ul li::before {
+            content: "✓";
+            margin-right: 10px;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .pricing-footer {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        
+        /* お問い合わせセクション */
+        .contact {
+            background-color: var(--white);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            line-height: 1.8;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 12px 25px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+        }
+        
+        /* フッター */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
