@@ -2,7 +2,7 @@ const https = require('https');
 const fs = require('fs');
 
 async function callClaudeAPI(prompt, apiKey) {
-  const data = JSON.stringify({
+  const requestBody = {
     model: "claude-3-5-sonnet-20241022",
     max_tokens: 4000,
     messages: [
@@ -11,7 +11,10 @@ async function callClaudeAPI(prompt, apiKey) {
         content: prompt
       }
     ]
-  });
+  };
+  
+  const data = JSON.stringify(requestBody);
+  console.log('Request Body Length:', data.length);
 
   const options = {
     hostname: 'api.anthropic.com',
@@ -65,8 +68,11 @@ async function callClaudeAPI(prompt, apiKey) {
 }
 
 async function generateWebsite(issueTitle, issueBody, apiKey) {
-  const prompt = `
-あなたはD's techのウェブデザイナーです。以下の要望に基づいて、完全なHTMLウェブサイトを作成してください。
+  // 改行文字を正しく処理
+  const cleanTitle = (issueTitle || '').replace(/\n/g, ' ').trim();
+  const cleanBody = (issueBody || '').replace(/\\n/g, '\n').replace(/\n/g, ' ').trim();
+  
+  const prompt = `あなたはD's techのウェブデザイナーです。以下の要望に基づいて、完全なHTMLウェブサイトを作成してください。
 
 ## 会社情報
 - 会社名: D's tech
@@ -75,8 +81,8 @@ async function generateWebsite(issueTitle, issueBody, apiKey) {
 - 特徴: 個人事業主ならではの丁寧なサポート
 
 ## 要望
-タイトル: ${issueTitle}
-内容: ${issueBody}
+タイトル: ${cleanTitle}
+内容: ${cleanBody}
 
 ## 出力要件
 - 完全なHTML（CSS、JavaScriptを含む）
@@ -85,8 +91,7 @@ async function generateWebsite(issueTitle, issueBody, apiKey) {
 - D's techの情報を適切に含める
 - 要望に応じた機能を実装
 
-HTMLコードのみを出力してください（説明文は不要）：
-`;
+HTMLコードのみを出力してください（説明文は不要）：`;
 
   try {
     const htmlContent = await callClaudeAPI(prompt, apiKey);
@@ -102,6 +107,11 @@ async function main() {
   const issueTitle = process.env.ISSUE_TITLE;
   const issueBody = process.env.ISSUE_BODY;
   const apiKey = process.env.ANTHROPIC_API_KEY;
+
+  console.log('Environment variables:');
+  console.log('ISSUE_TITLE:', issueTitle);
+  console.log('ISSUE_BODY:', issueBody);
+  console.log('API_KEY present:', !!apiKey);
 
   if (!apiKey) {
     throw new Error('ANTHROPIC_API_KEY environment variable is required');
