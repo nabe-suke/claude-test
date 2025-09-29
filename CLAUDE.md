@@ -1,155 +1,103 @@
-# D's tech - 茨城県阿見町のホームページ制作サイト
+# D's tech Website Specifications
 
-茨城県阿見町を拠点とする個人事業主によるホームページ制作・ウェブデザインサービスのWebサイトです。
+## Company Information
+- **Company Name**: D's tech
+- **Location**: Ami-machi, Ibaraki Prefecture, Japan
+- **Service**: Website creation and web design
+- **Pricing**: 10,000 yen per month (tax included)
+- **Feature**: Careful support unique to individual business owners
+- **Target Area**: Ami-machi, Ibaraki (nationwide support available)
 
-## サイト概要
+## HTML Generation Rules
 
-**事業内容**: ホームページ制作・ウェブデザイン  
-**対象地域**: 茨城県阿見町（全国対応可能）  
-**料金体系**: 月額1万円（税込）の定額制  
-**特徴**: 個人事業主ならではの丁寧なサポート・低価格・迅速対応
+### Required Elements (MUST INCLUDE)
+- Company name "D's tech" prominently displayed
+- Location "茨城県阿見町" (Ami-machi, Ibaraki)
+- Pricing "月額1万円（税込）" (10,000 yen/month tax included)
+- Feature "個人事業主ならではの丁寧なサポート" (careful individual support)
 
-## Claude AI 自動生成ルール
+### Technical Requirements
+- Complete HTML file with internal CSS and JavaScript only
+- No external libraries, CDNs, or image files
+- Responsive design (mobile-first)
+- Semantic HTML5 tags
+- Accessibility attributes (alt, proper headings)
 
-### 必須要素
-- **会社名**: 必ず「D's tech」を含める
-- **所在地**: 「茨城県阿見町」を明記
-- **料金**: 「月額1万円（税込）」を表示
-- **特徴**: 「個人事業主ならではの丁寧なサポート」を強調
+### Design Guidelines
+- Color scheme: Blue tones (#007bff, #0056b3)
+- Typography: System fonts (Arial, sans-serif)
+- Layout: Card-based, CSS Grid/Flexbox
+- Animations: Subtle and functional only
 
-### 技術要件
-- **HTML5**: セマンティックタグ使用必須
-- **CSS**: 内部スタイル（`<style>`タグ内）で完結
-- **JavaScript**: 必要に応じて内部記述（`<script>`タグ内）
-- **レスポンシブ**: モバイルファースト設計
-- **アクセシビリティ**: alt属性、適切な見出し構造
+### Content Structure
+- Header with navigation
+- Hero section with company introduction
+- Services overview (6 key features)
+- Pricing information
+- Contact information
+- Footer with company details
 
-### デザインガイドライン
-- **カラーパレット**: 青系統（#007bff, #0056b3）をメイン
-- **フォント**: システムフォント優先（Arial, sans-serif）
-- **レイアウト**: カードベース、グリッドシステム
-- **アニメーション**: 控えめで実用的なもの
+### Modification Rules (CRITICAL - FOLLOW EXACTLY)
 
-### 禁止事項
-- 外部CDN・ライブラリの使用禁止
-- 画像ファイルの参照禁止（CSS背景色・グラデーションで代替）
-- 複雑なJavaScriptライブラリの使用禁止
-- インラインスタイルの多用禁止
+#### Scope Limitation
+- **ONLY modify elements explicitly mentioned in the request**
+- **NEVER change unrelated DOM elements, styles, or content**
+- **PRESERVE all existing functionality and layout not mentioned**
 
-### 修正指示の解釈ルール
-1. **「追加」指示**: 既存コンテンツを保持し、指定箇所に新要素を追加
-2. **「変更」指示**: 指定部分のみを修正、他は保持
-3. **「削除」指示**: 指定要素のみを削除
-4. **曖昧な指示**: D's techの事業内容に合致する合理的な解釈を適用
+#### Specific Instructions
+- "Add to footer": Only modify footer content, keep header/main/nav unchanged
+- "Change header": Only modify header elements, keep body/footer unchanged
+- "Update pricing": Only modify pricing section, keep all other sections unchanged
+- "Add button": Only add the specified button, don't modify existing buttons
 
-## サイト構造
+#### What NOT to do
+- Don't reorganize entire HTML structure for small changes
+- Don't modify CSS classes/IDs not related to the request
+- Don't change color schemes unless specifically asked
+- Don't alter navigation unless navigation changes are requested
+- Don't modify responsive breakpoints unless layout changes are requested
 
-```
-/
-├── index.html              # メインページ（ホーム・概要・サービス・料金・お問い合わせ）
-├── pages/
-│   ├── faq.html           # よくある質問
-│   └── profile.html       # 代表者プロフィール
-├── assets/
-│   ├── css/
-│   │   └── style.css      # 統合スタイルシート
-│   ├── js/
-│   │   └── main.js        # メイン機能（スライドショー・ナビ等）
-│   └── images/
-│       ├── logo.png       # ロゴ画像
-│       ├── slide/         # スライドショー画像（4枚）
-│       │   ├── slide01.jpg
-│       │   ├── slide02.jpg
-│       │   ├── slide03.jpg
-│       │   └── slide04.jpg
-│       └── profile-placeholder.png
-├── .github/
-│   └── workflows/
-│       └── claude-web-design-v3.yml  # GitHub Actions設定
-├── CLAUDE.md               # サイト仕様書
-└── favicon.ico
-```
+#### Safe Modification Approach
+1. Identify the EXACT element mentioned in request
+2. Make MINIMAL changes to that element only
+3. Ensure changes don't affect other elements
+4. Preserve all existing D's tech required information
 
-## 実装技術
+## Service Details
+- **Basic Plan**: 10,000 yen/month (tax included)
+- **Additional Costs**: Server (500 yen~), Domain (350 yen~)
+- **Included Services**: Website creation, unlimited updates, responsive design, basic SEO, support
+- **Discount System**: Automatic discount for months without inquiries, referral discounts
 
-### フロントエンド
-- **HTML5**: セマンティックタグ・アクセシビリティ対応
-- **CSS3**: レスポンシブデザイン・CSS Grid・Flexbox・clamp関数
-- **JavaScript**: バニラJS・ES6+・クラスベース設計
+## Contact Information
+- **Email**: info@claude-design.com
+- **Hours**: Weekdays 09:00-17:00
+- **Response Time**: Within 48 hours
+- **Service Area**: Ami-machi, Ibaraki (nationwide available)
 
-### SEO対策
-- **構造化データ**: LocalBusiness・Person型のJSON-LD
-- **メタタグ**: 地域キーワード最適化
-- **レスポンシブ**: モバイルファースト設計
+## Output Format
+Generate a complete, self-contained HTML file with:
+1. DOCTYPE declaration
+2. HTML structure with head and body
+3. Internal CSS in <style> tags
+4. Internal JavaScript in <script> tags if needed
+5. All D's tech required information
+6. Responsive design for mobile/tablet/desktop
+7. Professional appearance suitable for a web design business
 
-### デザイン特徴
-- **カラーパレット**: 青系統のモダンなデザイン
-- **アニメーション**: スライドショー・カードホバー効果
-- **レイアウト**: カードベース・グリッドシステム
+**CRITICAL OUTPUT RULES:**
+- Output ONLY raw HTML code
+- DO NOT use markdown code blocks (```html or ```)
+- DO NOT include any explanatory text
+- Start directly with <!DOCTYPE html>
+- End with </html>
 
-## 主要機能
-
-### スライドショー
-- 4枚の画像による自動切り替え（5秒間隔）
-- インジケータークリックで手動切り替え
-- ホバー時の自動停止機能
-- 右から左への流れるアニメーション
-
-### ナビゲーション
-- 固定ヘッダー（スクロール時の背景変化）
-- ハンバーガーメニュー（モバイル対応）
-- スムーススクロール
-
-### コンテンツ
-- **概要セクション**: 6つのサービス特徴をカード表示
-- **サービス流れ**: 6ステップのワークフロー
-- **料金プラン**: 基本プラン・費用例・割引制度
-- **FAQ**: アコーディオン式の質問回答
-- **プロフィール**: 代表者の人柄・スキル・想い
-
-## デザインパターン
-
-- **グラスモーフィズム**: スライドコンテンツの背景
-- **カードレイアウト**: サービス紹介・FAQ・プロフィール
-- **グラデーション**: ボタン・価格表示
-- **ドロップシャドウ**: 立体感のある要素
-- **レスポンシブタイポグラフィ**: clamp関数による自動調整
-
-## 料金・サービス内容
-
-**基本料金**: 月額1万円（税込）  
-**追加費用**: サーバー代（500円〜）・ドメイン代（350円〜）  
-**含まれるサービス**:
-- ホームページ作成・更新無制限
-- レスポンシブデザイン
-- SEO基本対策
-- サポート対応
-- サンプル作成無料
-
-**割引制度**:
-- 問い合わせのない月は自動割引
-- 紹介割引制度
-
-## 技術仕様
-
-### レスポンシブブレークポイント
-- デスクトップ: 1200px以上
-- タブレット: 768px〜1199px
-- モバイル: 767px以下
-
-### パフォーマンス
-- 軽量設計（外部ライブラリ最小限）
-- 画像最適化
-- CSS・JS最小化
-
-### ブラウザ対応
-- モダンブラウザ対応
-- IE11非対応
-- モバイルブラウザ最適化
-
-## お問い合わせ
-
-**メール**: info@claude-design.com  
-**対応時間**: 平日09:00-17:00  
-**返信目安**: 48時間以内  
-**対応地域**: 茨城県阿見町（全国対応可能）
+## Modification Validation Checklist
+Before finalizing output, verify:
+- [ ] Only requested elements were modified
+- [ ] All D's tech required information is still present
+- [ ] Unrelated sections remain unchanged
+- [ ] Overall layout and design consistency maintained
+- [ ] No unintended side effects on other elements
+- [ ] Output contains ONLY HTML code without markdown formatting
+- [ ] No ```html or ``` markers in the output

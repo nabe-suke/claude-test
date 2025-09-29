@@ -93,7 +93,32 @@ Content: ${cleanBody}
 Output only HTML code (no explanations needed):`;
 
   try {
-    const htmlContent = await callClaudeAPI(prompt, apiKey);
+    const rawContent = await callClaudeAPI(prompt, apiKey);
+    
+    // マークダウン記法を除去してHTMLコンテンツを抽出
+    let htmlContent = rawContent;
+    
+    // ```html で始まり ``` で終わる場合の処理
+    if (htmlContent.includes('```html')) {
+      const startIndex = htmlContent.indexOf('```html') + 7;
+      const endIndex = htmlContent.lastIndexOf('```');
+      if (endIndex > startIndex) {
+        htmlContent = htmlContent.substring(startIndex, endIndex);
+      }
+    }
+    
+    // ``` で始まり ``` で終わる場合の処理
+    else if (htmlContent.startsWith('```') && htmlContent.endsWith('```')) {
+      const lines = htmlContent.split('\n');
+      lines.shift(); // 最初の ``` 行を削除
+      lines.pop();   // 最後の ``` 行を削除
+      htmlContent = lines.join('\n');
+    }
+    
+    // 前後の空白を除去
+    htmlContent = htmlContent.trim();
+    
+    console.log('HTML content extracted, length:', htmlContent.length);
     return htmlContent;
   } catch (error) {
     console.error('Claude API Error:', error);
