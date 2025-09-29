@@ -88,9 +88,62 @@ jobs:
             console.log(`Issue #${issueNumber}: ${issue.data.title}`);
             console.log('ワークフローテスト完了 - 実際の実装ではClaude APIを呼び出してコードを生成します');
 
+      - name: Create preview HTML
+        run: |
+          mkdir -p preview
+          cat > preview/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="ja">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>D's tech - プレビュー (Issue #${{ env.ISSUE_NUMBER }})</title>
+              <style>
+                  body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+                  .container { max-width: 800px; margin: 0 auto; }
+                  .header { background: #f4f4f4; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+                  .status { background: #d4edda; padding: 15px; border-radius: 5px; margin: 20px 0; }
+                  .info { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 20px 0; }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <div class="header">
+                      <h1>D's tech - プレビューサイト</h1>
+                      <p>Issue #${{ env.ISSUE_NUMBER }} の対応プレビュー</p>
+                  </div>
+                  
+                  <div class="status">
+                      <h2>✅ プレビュー正常表示</h2>
+                      <p>GitHub Pagesが正しく動作しています。</p>
+                  </div>
+                  
+                  <div class="info">
+                      <h3>D's tech について</h3>
+                      <ul>
+                          <li><strong>事業地</strong>: 茨城県阿見町</li>
+                          <li><strong>料金</strong>: 月額1万円（税込）</li>
+                          <li><strong>特徴</strong>: 個人事業主ならではの丁寧なサポート</li>
+                      </ul>
+                  </div>
+                  
+                  <div class="info">
+                      <h3>技術情報</h3>
+                      <ul>
+                          <li><strong>ブランチ</strong>: ${{ env.BRANCH_NAME }}</li>
+                          <li><strong>デプロイ時刻</strong>: $(date)</li>
+                          <li><strong>Issue番号</strong>: #${{ env.ISSUE_NUMBER }}</li>
+                      </ul>
+                  </div>
+              </div>
+          </body>
+          </html>
+          EOF
+
       - name: Create empty commit
         run: |
-          git commit --allow-empty -m "D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 (ワークフローテスト)"
+          git add preview/
+          git commit -m "D's tech: Issue #${{ env.ISSUE_NUMBER }} に対応 - プレビューHTML作成"
           git push origin ${{ env.BRANCH_NAME }}
 
       - name: Create Pull Request
@@ -131,9 +184,17 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./preview
+          publish_branch: gh-pages
           destination_dir: pr-${{ env.PR_NUMBER }}
           keep_files: true
+          force_orphan: false
+
+      - name: Wait for Pages deployment
+        if: success()
+        run: |
+          echo "GitHub Pagesのデプロイを待機中..."
+          sleep 60
 
       - name: Update Issue with completion and preview
         if: success()
@@ -142,14 +203,15 @@ jobs:
           script: |
             const issueNumber = parseInt(process.env.ISSUE_NUMBER);
             const prNumber = process.env.PR_NUMBER;
-            const previewUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${prNumber}/`;
+            const repoName = context.repo.repo;
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/${repoName}/pr-${prNumber}/`;
             
             // Issueを更新
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: `**処理完了**\n\n**作成されたPR**: #${prNumber}\n**ブランチ**: \`${{ env.BRANCH_NAME }}\`\n\n## プレビューサイト\n**URL**: ${previewUrl}\n\nプレビューで内容を確認後、問題なければPRをマージしてください。\n\n---\n\n**D's tech 情報**\n- 事業地: 茨城県阿見町\n- 料金: 月額1万円（税込）\n- 特徴: 個人事業主ならではの丁寧なサポート`
+              body: `**処理完了**\n\n**作成されたPR**: #${prNumber}\n**ブランチ**: \`${{ env.BRANCH_NAME }}\`\n\n## プレビューサイト\n**URL**: ${previewUrl}\n**注意**: プレビューの反映に2-3分かかる場合があります。\n\nプレビューで内容を確認後、問題なければPRをマージしてください。\n\n---\n\n**D's tech 情報**\n- 事業地: 茨城県阿見町\n- 料金: 月額1万円（税込）\n- 特徴: 個人事業主ならではの丁寧なサポート`
             });
             
             // PRにもプレビューリンクを追加
@@ -157,7 +219,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: parseInt(prNumber),
-              body: `## プレビューサイト\n\n**URL**: ${previewUrl}\n\nプレビューで内容を確認し、問題なければマージしてください。\n\n**D's tech**: 茨城県阿見町のホームページ制作（月額1万円）`
+              body: `## プレビューサイト\n\n**URL**: ${previewUrl}\n**注意**: プレビューの反映に2-3分かかる場合があります。\n\nプレビューで内容を確認し、問題なければマージしてください。\n\n**D's tech**: 茨城県阿見町のホームページ制作（月額1万円）`
             });
             
             // Issueにラベル追加
