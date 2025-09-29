@@ -14,7 +14,9 @@ async function callClaudeAPI(prompt, apiKey) {
   };
   
   const data = JSON.stringify(requestBody);
-  console.log('Request Body Length:', data.length);
+  const dataBuffer = Buffer.from(data, 'utf8');
+  console.log('Request Body Length:', dataBuffer.length);
+  console.log('Request Body Preview:', data.substring(0, 200) + '...');
 
   const options = {
     hostname: 'api.anthropic.com',
@@ -22,10 +24,10 @@ async function callClaudeAPI(prompt, apiKey) {
     path: '/v1/messages',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
       'x-api-key': apiKey,
       'anthropic-version': '2023-06-01',
-      'Content-Length': data.length
+      'Content-Length': dataBuffer.length
     }
   };
 
@@ -62,36 +64,36 @@ async function callClaudeAPI(prompt, apiKey) {
       reject(error);
     });
 
-    req.write(data);
+    req.write(dataBuffer);
     req.end();
   });
 }
 
 async function generateWebsite(issueTitle, issueBody, apiKey) {
-  // 改行文字を正しく処理
-  const cleanTitle = (issueTitle || '').replace(/\n/g, ' ').trim();
-  const cleanBody = (issueBody || '').replace(/\\n/g, '\n').replace(/\n/g, ' ').trim();
+  // 文字列を安全にクリーニング
+  const cleanTitle = (issueTitle || '').replace(/[\r\n\t]/g, ' ').replace(/\s+/g, ' ').trim();
+  const cleanBody = (issueBody || '').replace(/\\n/g, ' ').replace(/[\r\n\t]/g, ' ').replace(/\s+/g, ' ').trim();
   
-  const prompt = `あなたはD's techのウェブデザイナーです。以下の要望に基づいて、完全なHTMLウェブサイトを作成してください。
+  const prompt = `You are a web designer for D's tech. Create a complete HTML website based on the following requirements.
 
-## 会社情報
-- 会社名: D's tech
-- 事業地: 茨城県阿見町
-- 料金: 月額1万円（税込）
-- 特徴: 個人事業主ならではの丁寧なサポート
+## Company Information
+- Company: D's tech
+- Location: Ami-machi, Ibaraki Prefecture
+- Price: 10,000 yen per month (tax included)
+- Feature: Careful support unique to individual business owners
 
-## 要望
-タイトル: ${cleanTitle}
-内容: ${cleanBody}
+## Requirements
+Title: ${cleanTitle}
+Content: ${cleanBody}
 
-## 出力要件
-- 完全なHTML（CSS、JavaScriptを含む）
-- レスポンシブデザイン
-- モダンで美しいデザイン
-- D's techの情報を適切に含める
-- 要望に応じた機能を実装
+## Output Requirements
+- Complete HTML (including CSS and JavaScript)
+- Responsive design
+- Modern and beautiful design
+- Include D's tech information appropriately
+- Implement functions according to requirements
 
-HTMLコードのみを出力してください（説明文は不要）：`;
+Output only HTML code (no explanations needed):`;
 
   try {
     const htmlContent = await callClaudeAPI(prompt, apiKey);
@@ -109,8 +111,8 @@ async function main() {
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
   console.log('Environment variables:');
-  console.log('ISSUE_TITLE:', issueTitle);
-  console.log('ISSUE_BODY:', issueBody);
+  console.log('ISSUE_TITLE:', JSON.stringify(issueTitle));
+  console.log('ISSUE_BODY:', JSON.stringify(issueBody));
   console.log('API_KEY present:', !!apiKey);
 
   if (!apiKey) {
