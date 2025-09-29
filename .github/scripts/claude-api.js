@@ -35,15 +35,22 @@ async function callClaudeAPI(prompt, apiKey) {
       });
       
       res.on('end', () => {
+        console.log('Status Code:', res.statusCode);
+        console.log('Response Data:', responseData);
+        
         try {
           const response = JSON.parse(responseData);
+          console.log('Parsed Response:', JSON.stringify(response, null, 2));
+          
           if (response.content && response.content[0] && response.content[0].text) {
             resolve(response.content[0].text);
+          } else if (response.error) {
+            reject(new Error(`API Error: ${response.error.message || response.error.type}`));
           } else {
-            reject(new Error('Invalid response format'));
+            reject(new Error(`Invalid response format: ${JSON.stringify(response)}`));
           }
         } catch (error) {
-          reject(error);
+          reject(new Error(`JSON Parse Error: ${error.message}. Raw response: ${responseData}`));
         }
       });
     });
