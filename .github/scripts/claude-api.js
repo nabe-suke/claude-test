@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function callClaudeAPI(prompt, apiKey) {
   const requestBody = {
-    model: "claude-3-5-sonnet-20241022",
+    model: "claude-3-7-sonnet-20250219",
     max_tokens: 4000,
     messages: [
       {
