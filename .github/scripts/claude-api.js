@@ -105,8 +105,18 @@ Output only HTML code (no explanations needed):`;
 async function main() {
   const issueTitle = process.env.ISSUE_TITLE;
   const issueBody = process.env.ISSUE_BODY;
-  const claudeSpecs = process.env.CLAUDE_SPECS;
+  const claudeSpecsB64 = process.env.CLAUDE_SPECS_B64;
   const apiKey = process.env.ANTHROPIC_API_KEY;
+
+  // Base64デコード
+  let claudeSpecs = '';
+  if (claudeSpecsB64) {
+    try {
+      claudeSpecs = Buffer.from(claudeSpecsB64, 'base64').toString('utf8');
+    } catch (error) {
+      console.error('CLAUDE.mdデコードエラー:', error);
+    }
+  }
 
   console.log('Environment variables:');
   console.log('ISSUE_TITLE:', JSON.stringify(issueTitle));
