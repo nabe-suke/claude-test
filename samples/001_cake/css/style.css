@@ -8,7 +8,7 @@ body {
     font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #5a5a5a;
-    background-color: #000;
+    background-color: #fef7f7;
     margin: 0;
     padding: 0;
 }
@@ -50,20 +50,19 @@ body {
 /* Site Container */
 .site-container {
     background-color: #fef7f7;
-    margin: 40px 10px 10px 10px;
-    border: 8px solid #000;
-    border-radius: 15px;
+    margin: 40px 0 0 0;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Notice Banner */
 .notice-banner {
     background: linear-gradient(135deg, #ffcdd2, #f8bbd9);
     padding: 1rem 0;
-    margin-top: 70px;
+    margin-top: 90px;
     border-bottom: 3px solid #f48fb1;
     animation: slideDown 0.5s ease-out;
+    position: relative;
+    z-index: 900;
 }
 
 .notice-content {
@@ -231,10 +230,10 @@ nav {
 .hero {
     display: flex;
     align-items: center;
-    min-height: 100vh;
+    min-height: 70vh;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem 2rem 0 2rem;
     gap: 3rem;
 }
 
@@ -265,6 +264,8 @@ nav {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+    text-decoration: none;
+    display: inline-block;
 }
 
 .cta-button:hover {
@@ -318,6 +319,30 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.section-link {
+    text-align: center;
+}
+
+.section-link-btn {
+    background: linear-gradient(135deg, #f48fb1, #d81b60);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.section-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(216, 27, 96, 0.4);
 }
 
 .cake-card {
@@ -776,15 +801,15 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-toggle {
-        display: flex;
+        display: flex !important;
     }
     
     .nav-menu {
         position: fixed;
-        top: 100px;
+        top: 120px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 100px);
+        height: calc(100vh - 120px);
         background: rgba(252, 228, 236, 0.98);
         flex-direction: column;
         justify-content: flex-start;
@@ -1000,6 +1025,81 @@ p, li {
 .news-section {
     padding: 3rem 2rem;
     min-height: 80vh;
+}
+
+/* Cakes Page */
+.section-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: white;
+    border: 2px solid #f48fb1;
+    color: #d81b60;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #f48fb1;
+    color: white;
+}
+
+.filter-btn.active {
+    background: #d81b60;
+    color: white;
+    border-color: #d81b60;
+}
+
+.filter-btn.limited {
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+    border-color: #ff6b6b;
+    color: white;
+    font-weight: 600;
+}
+
+.filter-btn.limited:hover {
+    background: linear-gradient(135deg, #ff5252, #ffcc02);
+}
+
+.filter-btn.limited.active {
+    background: linear-gradient(135deg, #e53935, #ff9800);
+    border-color: #e53935;
+}
+
+.limited-item {
+    position: relative;
+    border: 2px solid #ff6b6b;
+}
+
+.limited-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
 .container {

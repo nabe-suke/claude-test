@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品紹介 - Sweet Dreams Bakery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sample-banner">
+        <div class="sample-content">
+            <span class="sample-icon">⚠️</span>
+            <span class="sample-text">これは</span>
+            <a href="../../index.html#samples"><img src="../../assets/images/logo.png" alt="D's tech" class="sample-logo"></a>
+            <span class="sample-text">が提供するサンプルです</span>
+            <span class="sample-icon">⚠️</span>
+        </div>
+    </div>
+    <div class="site-container">
+        <header>
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Sweet Dreams Bakery" class="logo-img">
+                </a>
+                <button class="nav-toggle" aria-label="メニューを開く">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="news.html">
+                        <span class="nav-jp">お知らせ</span>
+                        <span class="nav-en">News</span>
+                    </a></li>
+                    <li><a href="cakes.html">
+                        <span class="nav-jp">商品紹介</span>
+                        <span class="nav-en">Cake</span>
+                    </a></li>
+                    <li><a href="index.html#about">
+                        <span class="nav-jp">シェフについて</span>
+                        <span class="nav-en">Chef</span>
+                    </a></li>
+                    <li><a href="index.html#stores">
+                        <span class="nav-jp">アクセス・営業店</span>
+                        <span class="nav-en">Stores</span>
+                    </a></li>
+                    <li><a href="index.html#contact">
+                        <span class="nav-jp">お問い合わせ</span>
+                        <span class="nav-en">Contact</span>
+                    </a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="cakes-section">
+                <div class="container">
+                    <h1>商品紹介</h1>
+                    <p class="section-intro">Sweet Dreams Bakeryが心を込めて作る、こだわりのケーキをご紹介いたします。</p>
+                    
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">すべて</button>
+                        <button class="filter-btn limited" data-filter="limited">期間限定</button>
+                        <button class="filter-btn" data-filter="piece">ピースケーキ</button>
+                        <button class="filter-btn" data-filter="whole">ホールケーキ</button>
+                        <button class="filter-btn" data-filter="baked">焼き菓子</button>
+                    </div>
+                    
+                    <div class="cake-grid">
+                        <div class="cake-card limited-item" data-category="limited">
+                            <img src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?w=300&h=300&fit=crop" alt="クリスマスケーキ">
+                            <h3>クリスマスケーキ（ホール）</h3>
+                            <p>イチゴとホワイトチョコで飾った特別なクリスマスケーキ</p>
+                            <span class="price">¥4,800</span>
+                            <span class="limited-badge">期間限定</span>
+                        </div>
+                        <div class="cake-card limited-item" data-category="limited">
+                            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=300&h=300&fit=crop" alt="クリスマスモンブラン">
+                            <h3>クリスマスモンブラン（1ピース）</h3>
+                            <p>栗とホワイトチョコのコラボレーション</p>
+                            <span class="price">¥680</span>
+                            <span class="limited-badge">期間限定</span>
+                        </div>
+                        <div class="cake-card limited-item" data-category="limited">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop" alt="シュトーレン">
+                            <h3>シュトーレン（ホール）</h3>
+                            <p>ドイツ伝統のクリスマスケーキ、スパイスの香り</p>
+                            <span class="price">¥3,900</span>
+                            <span class="limited-badge">期間限定</span>
+                        </div>
+                        <div class="cake-card limited-item" data-category="limited">
+                            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=300&h=300&fit=crop" alt="ジンジャークッキー">
+                            <h3>ジンジャークッキー（10枚入り）</h3>
+                            <p>スパイシーなジンジャーの風味が特徴のクッキー</p>
+                            <span class="price">¥1,400</span>
+                            <span class="limited-badge">期間限定</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=300&h=300&fit=crop" alt="ストロベリーケーキ">
+                            <h3>ストロベリーケーキ（1ピース）</h3>
+                            <p>新鮮なイチゴをたっぷり使った人気No.1ケーキ</p>
+                            <span class="price">¥480</span>
+                        </div>
+                        <div class="cake-card" data-category="whole">
+                            <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=300&h=300&fit=crop" alt="チョコレートケーキ">
+                            <h3>チョコレートケーキ（ホール）</h3>
+                            <p>濃厚なベルギーチョコレートの贅沢な味わい</p>
+                            <span class="price">¥3,800</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=300&h=300&fit=crop" alt="チーズケーキ">
+                            <h3>ニューヨークチーズケーキ（1ピース）</h3>
+                            <p>クリーミーで滑らかな口当たりの本格チーズケーキ</p>
+                            <span class="price">¥420</span>
+                        </div>
+                        <div class="cake-card" data-category="whole">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=300&h=300&fit=crop" alt="フルーツタルト">
+                            <h3>季節のフルーツタルト（ホール）</h3>
+                            <p>旬のフルーツを美しく飾った見た目も華やかなタルト</p>
+                            <span class="price">¥4,200</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=300&h=300&fit=crop" alt="モンブラン">
+                            <h3>モンブラン（1ピース）</h3>
+                            <p>栗の風味豊かなクリームと軽やかなスポンジの絶妙なハーモニー</p>
+                            <span class="price">¥520</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop" alt="ティラミス">
+                            <h3>ティラミス（1ピース）</h3>
+                            <p>マスカルポーネチーズとコーヒーの大人の味わい</p>
+                            <span class="price">¥450</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300&h=300&fit=crop" alt="レモンタルト">
+                            <h3>レモンタルト（1ピース）</h3>
+                            <p>爽やかなレモンカードとサクサクのタルト生地</p>
+                            <span class="price">¥430</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&h=300&fit=crop" alt="オペラ">
+                            <h3>オペラ（1ピース）</h3>
+                            <p>フランス伝統の層が美しいチョコレートケーキ</p>
+                            <span class="price">¥680</span>
+                        </div>
+                        <div class="cake-card" data-category="piece">
+                            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=300&h=300&fit=crop" alt="ミルフィーユ">
+                            <h3>ミルフィーユ（1ピース）</h3>
+                            <p>パリパリのパイ生地とカスタードクリームの層</p>
+                            <span class="price">¥490</span>
+                        </div>
+                        <div class="cake-card" data-category="whole">
+                            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=300&h=300&fit=crop" alt="マカロンケーキ">
+                            <h3>マカロンケーキ（ホール）</h3>
+                            <p>カラフルなマカロンで飾られた特別なケーキ</p>
+                            <span class="price">¥5,200</span>
+                        </div>
+                        <div class="cake-card" data-category="whole">
+                            <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?w=300&h=300&fit=crop" alt="抹茶ケーキ">
+                            <h3>抹茶ケーキ（ホール）</h3>
+                            <p>京都産の上質な抹茶を使用した和風ケーキ</p>
+                            <span class="price">¥3,400</span>
+                        </div>
+                        <div class="cake-card" data-category="whole">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop" alt="バニラケーキ">
+                            <h3>バニラケーキ（ホール）</h3>
+                            <p>マダガスカル産バニラビーンズの香り豊かなケーキ</p>
+                            <span class="price">¥2,700</span>
+                        </div>
+                        <div class="cake-card" data-category="baked">
+                            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=300&h=300&fit=crop" alt="マドレーヌ">
+                            <h3>マドレーヌ（6個入り）</h3>
+                            <p>バターの香り豊かなフランス伝統の焼き菓子</p>
+                            <span class="price">¥1,200</span>
+                        </div>
+                        <div class="cake-card" data-category="baked">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&h=300&fit=crop" alt="フィナンシェ">
+                            <h3>フィナンシェ（8個入り）</h3>
+                            <p>アーモンドの風味とバターの香りが絶品</p>
+                            <span class="price">¥1,800</span>
+                        </div>
+                        <div class="cake-card" data-category="baked">
+                            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=300&h=300&fit=crop" alt="クッキー">
+                            <h3>アソートクッキー（12枚入り）</h3>
+                            <p>バニラ、チョコ、抹茶の3種類のクッキー詰め合わせ</p>
+                            <span class="price">¥980</span>
+                        </div>
+                        <div class="cake-card" data-category="baked">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300&h=300&fit=crop" alt="スコーン">
+                            <h3>スコーン（4個入り）</h3>
+                            <p>外はサクサク、中はふんわりの英国風スコーン</p>
+                            <span class="price">¥800</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>お問い合わせ</h3>
+                    <p>📍 茨城県稲敷郡阿見町●●●-●-●</p>
+                    <p>📞 029-●●●-●●●●</p>
+                    <p>📧 info@●●●●●●●.jp</p>
+                    <p>🕒 営業時間: 9:00-19:00（定休日：月曜日）</p>
+                </div>
+                <div class="map-section">
+                    <h3>アクセス</h3>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.8234567890123!2d140.2234567890123!3d36.0234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60220c1234567890%3A0x1234567890abcdef!2z6Zi_6KaL55S65b2557eQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp" 
+                        width="300" 
+                        height="200" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Sweet Dreams Bakery" class="footer-logo-img">
+                    <p>あなたの特別な日を彩ります</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sweet Dreams Bakery. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        // ハンバーガーメニュー機能
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // メニューリンククリック時にメニューを閉じる
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+    <script src="js/filter.js"></script>
+</body>
+</html>
