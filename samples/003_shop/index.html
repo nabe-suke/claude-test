@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ナチュラル雑貨 - 心地よい暮らしのお手伝い</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sample-banner">
+        <div class="sample-content">
+            <span class="sample-icon">⚠️</span>
+            <span class="sample-text">これは</span>
+            <a href="../../index.html#samples"><img src="../../assets/images/logo.png" alt="D's tech" class="sample-logo"></a>
+            <span class="sample-text">が提供するサンプルです</span>
+            <span class="sample-icon">⚠️</span>
+        </div>
+    </div>
+    
+    <div class="site-container">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1>ナチュラル雑貨</h1>
+                        <p>Natural Zakka</p>
+                    </div>
+                    <nav class="nav">
+                        <button class="nav-toggle">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                        <ul class="nav-menu">
+                            <li><a href="#home">ホーム</a></li>
+                            <li><a href="#products">商品</a></li>
+                            <li><a href="#about">お店について</a></li>
+                            <li><a href="#contact">アクセス</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h2>心地よい暮らしを<br>お手伝いします</h2>
+                    <p>自然素材にこだわった雑貨で、あなたの日常に温もりを</p>
+                    <a href="#products" class="cta-button">商品を見る</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop" alt="ナチュラル雑貨">
+                </div>
+            </section>
+
+            <section id="products" class="products">
+                <div class="container">
+                    <h2>おすすめ商品</h2>
+                    <div class="product-categories">
+                        <button class="category-btn active" data-category="all">すべて</button>
+                        <button class="category-btn" data-category="kitchen">キッチン</button>
+                        <button class="category-btn" data-category="living">リビング</button>
+                        <button class="category-btn" data-category="bath">バス・トイレ</button>
+                    </div>
+                    <div class="product-grid">
+                        <div class="product-card" data-category="kitchen">
+                            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop" alt="木製カッティングボード">
+                            <div class="product-info">
+                                <h3>木製カッティングボード</h3>
+                                <p>天然木を使用したハンドメイドのカッティングボード</p>
+                                <span class="price">¥3,800</span>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="living">
+                            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=400&fit=crop" alt="アロマキャンドル">
+                            <div class="product-info">
+                                <h3>アロマキャンドル</h3>
+                                <p>天然素材のソイワックスを使用したリラックスキャンドル</p>
+                                <span class="price">¥2,200</span>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="bath">
+                            <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop" alt="バンブータオル">
+                            <div class="product-info">
+                                <h3>バンブータオル</h3>
+                                <p>竹繊維100%の肌に優しいオーガニックタオル</p>
+                                <span class="price">¥1,500</span>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="kitchen">
+                            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400&h=400&fit=crop" alt="陶器マグカップ">
+                            <div class="product-info">
+                                <h3>陶器マグカップ</h3>
+                                <p>職人が一つ一つ手作りした温かみのあるマグカップ</p>
+                                <span class="price">¥2,800</span>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="living">
+                            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=400&fit=crop" alt="観葉植物">
+                            <div class="product-info">
+                                <h3>観葉植物セット</h3>
+                                <p>お部屋に緑を添える小さな観葉植物とテラコッタ鉢</p>
+                                <span class="price">¥1,800</span>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="bath">
+                            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop" alt="ナチュラルソープ">
+                            <div class="product-info">
+                                <h3>ナチュラルソープ</h3>
+                                <p>オリーブオイルベースの無添加手作り石鹸</p>
+                                <span class="price">¥980</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>お店について</h2>
+                            <p>ナチュラル雑貨は、自然素材にこだわった雑貨を扱う小さなお店です。</p>
+                            <p>木、竹、陶器、天然繊維など、地球に優しい素材で作られた商品を厳選してお届けしています。</p>
+                            <p>毎日使うものだからこそ、安心・安全で長く愛用できるものを。そんな想いで商品を選んでいます。</p>
+                            <div class="features">
+                                <div class="feature">
+                                    <span class="feature-icon">🌱</span>
+                                    <h4>自然素材</h4>
+                                    <p>環境に配慮した天然素材のみを使用</p>
+                                </div>
+                                <div class="feature">
+                                    <span class="feature-icon">✋</span>
+                                    <h4>ハンドメイド</h4>
+                                    <p>職人が一つ一つ丁寧に手作り</p>
+                                </div>
+                                <div class="feature">
+                                    <span class="feature-icon">♻️</span>
+                                    <h4>エコフレンドリー</h4>
+                                    <p>地球環境を考えた持続可能な商品</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=500&fit=crop" alt="お店の様子">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <div class="container">
+                    <h2>アクセス・お問い合わせ</h2>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <div class="info-item">
+                                <h4>店舗情報</h4>
+                                <p>📍 東京都○○区○○町1-2-3</p>
+                                <p>📞 03-●●●●-●●●●</p>
+                                <p>📧 info@natural-zakka.jp</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>営業時間</h4>
+                                <p>平日: 10:00 - 19:00</p>
+                                <p>土日祝: 10:00 - 18:00</p>
+                                <p>定休日: 毎週水曜日</p>
+                            </div>
+                        </div>
+                        <div class="contact-map">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8234567890123!2d139.7234567890123!3d35.6234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1234567890%3A0x1234567890abcdef!2z44OK44OB44Ol44Op44Or6ZuR6LKo!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 10px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h3>ナチュラル雑貨</h3>
+                        <p>心地よい暮らしのお手伝い</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>リンク</h4>
+                        <ul>
+                            <li><a href="#home">ホーム</a></li>
+                            <li><a href="#products">商品</a></li>
+                            <li><a href="#about">お店について</a></li>
+                            <li><a href="#contact">アクセス</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h4>フォローする</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ナチュラル雑貨. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
