@@ -17,6 +17,9 @@ class Slideshow {
             });
         });
         
+        // スワイプ機能を追加
+        this.initSwipe();
+        
         // 自動スライド開始
         this.startAutoSlide();
         
@@ -55,7 +58,39 @@ class Slideshow {
         this.goToSlide(nextIndex);
     }
     
-
+    prevSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.goToSlide(prevIndex);
+    }
+    
+    initSwipe() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        
+        let startX = 0;
+        let startY = 0;
+        
+        hero.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+        
+        hero.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    this.prevSlide();
+                } else {
+                    this.nextSlide();
+                }
+            }
+        });
+    }
     
     startAutoSlide() {
         if (this.slideInterval) {

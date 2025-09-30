@@ -442,6 +442,19 @@ body {
     margin: 0;
 }
 
+.workflow-comment ul {
+    display: inline-block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+.workflow-comment li {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+}
+
 .price {
     font-size: 1.3em;
     font-weight: bold;
