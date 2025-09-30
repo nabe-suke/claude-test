@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dreams Bakery - 夢のケーキ屋さん</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sample-banner">
+        <div class="sample-content">
+            <span class="sample-icon">⚠️</span>
+            <span class="sample-text">これは</span>
+            <a href="../../index.html"><img src="../../assets/images/logo.png" alt="D's tech" class="sample-logo"></a>
+            <span class="sample-text">が提供するサンプルです</span>
+            <span class="sample-icon">⚠️</span>
+        </div>
+    </div>
+    <div class="site-container">
+    <header>
+        <nav>
+            <a href="#home" class="logo">
+                <img src="images/logo.png" alt="Sweet Dreams Bakery" class="logo-img">
+            </a>
+            <button class="nav-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="news.html">
+                    <span class="nav-jp">お知らせ</span>
+                    <span class="nav-en">News</span>
+                </a></li>
+                <li><a href="#cakes">
+                    <span class="nav-jp">商品紹介</span>
+                    <span class="nav-en">Cake</span>
+                </a></li>
+                <li><a href="#about">
+                    <span class="nav-jp">シェフについて</span>
+                    <span class="nav-en">Chef</span>
+                </a></li>
+                <li><a href="#stores">
+                    <span class="nav-jp">アクセス・営業店</span>
+                    <span class="nav-en">Stores</span>
+                </a></li>
+                <li><a href="#contact">
+                    <span class="nav-jp">お問い合わせ</span>
+                    <span class="nav-en">Contact</span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="notice-banner">
+        <div class="notice-content">
+            <span class="notice-icon">📢</span>
+            <div class="notice-text">
+                <strong>お知らせ</strong>
+                <p>クリスマス限定ケーキの予約受付中！12月10日まで特別価格でご提供いたします。</p>
+            </div>
+            <button class="notice-close">×</button>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <img src="images/logo.png" alt="Sweet Dreams Bakery" class="hero-logo">
+                <p>心を込めて作る、特別なケーキをお届けします</p>
+                <button class="cta-button">ケーキを見る</button>
+            </div>
+            <div class="hero-image">
+                <div class="hero-slideshow">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop" alt="美しいケーキ" class="hero-slide active">
+                    <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=400&fit=crop" alt="ストロベリーケーキ" class="hero-slide">
+                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=400&fit=crop" alt="チョコレートケーキ" class="hero-slide">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=400&fit=crop" alt="チーズケーキ" class="hero-slide">
+                </div>
+            </div>
+        </section>
+
+        <section id="cakes" class="cakes-section">
+            <h2>商品紹介</h2>
+            <div class="cake-grid">
+                <div class="cake-card">
+                    <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=300&h=300&fit=crop" alt="ストロベリーケーキ">
+                    <h3>ストロベリーケーキ</h3>
+                    <p>新鮮なイチゴをたっぷり使った人気No.1ケーキ</p>
+                    <span class="price">¥3,200</span>
+                </div>
+                <div class="cake-card">
+                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=300&h=300&fit=crop" alt="チョコレートケーキ">
+                    <h3>チョコレートケーキ</h3>
+                    <p>濃厚なベルギーチョコレートの贅沢な味わい</p>
+                    <span class="price">¥3,800</span>
+                </div>
+                <div class="cake-card">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=300&h=300&fit=crop" alt="チーズケーキ">
+                    <h3>ニューヨークチーズケーキ</h3>
+                    <p>クリーミーで滑らかな口当たりの本格チーズケーキ</p>
+                    <span class="price">¥2,800</span>
+                </div>
+                <div class="cake-card">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=300&h=300&fit=crop" alt="フルーツタルト">
+                    <h3>季節のフルーツタルト</h3>
+                    <p>旬のフルーツを美しく飾った見た目も華やかなタルト</p>
+                    <span class="price">¥4,200</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="#fef9f9"></path>
+            </svg>
+        </div>
+
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <h2>シェフについて</h2>
+                <div class="chef-profile">
+                    <h3>●● ●●（●●●● ●●●●）</h3>
+                    <p class="chef-title">オーナーシェフ・パティシエ</p>
+                </div>
+                <p>フランスのパティスリー学校で修業後、パリの有名パティスリーで修行を積みました。帰国後、2010年にSweet Dreams Bakeryを開業。「一つ一つのケーキに物語を込めたい」という想いで、伝統的なフランス菓子の技法と日本の繊細な感性を融合させた独自のスタイルを確立しました。</p>
+                <p>「お客様の笑顔を見るために、毎日新鮮な気持ちでケーキを作っています。特別な日の思い出を、美味しいケーキとともにお届けできることが私の一番の幸せです。」</p>
+                <div class="chef-awards">
+                    <h4>受賞歴</h4>
+                    <ul>
+                        <li>2018年 全国ケーキコンテスト 金賞</li>
+                        <li>2020年 茨城県優秀パティシエ賞</li>
+                        <li>2022年 ジャパンケーキショー グランプリ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=500&h=600&fit=crop" alt="シェフ 佐藤美奈子">
+            </div>
+        </section>
+
+        <div class="wave-divider wave-reverse">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 C300,0 900,120 1200,60 L1200,0 L0,0 Z" fill="#fef9f9"></path>
+            </svg>
+        </div>
+
+        <section id="stores" class="stores-section">
+            <h2>アクセス・営業店</h2>
+            <div class="stores-grid">
+                <div class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400&h=250&fit=crop" alt="本店外観">
+                    </div>
+                    <h3>本店（阿見店）</h3>
+                    <div class="store-info">
+                        <p>📍 茨城県稲敷郡阿見町●●●-●-●</p>
+                        <p>📞 029-●●●-●●●●</p>
+                        <p>🕒 9:00-19:00（定休日：月曜日）</p>
+                        <p>🎯 JR常磐線「荒川沖駅」よりバス15分</p>
+                    </div>
+                    <div class="store-features">
+                        <span class="feature-tag">駐車場あり</span>
+                        <span class="feature-tag">イートイン可</span>
+                    </div>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=250&fit=crop" alt="つくば店外観">
+                    </div>
+                    <h3>つくば店</h3>
+                    <div class="store-info">
+                        <p>📍 茨城県つくば市研究学園都市●A区●-●-●</p>
+                        <p>📞 029-●●●-●●●●</p>
+                        <p>🕒 10:00-20:00（定休日：火曜日）</p>
+                        <p>🎯 つくばエクスプレス「研究学園駅」徒歩5分</p>
+                    </div>
+                    <div class="store-features">
+                        <span class="feature-tag">駐車場あり</span>
+                        <span class="feature-tag">カフェスペース</span>
+                    </div>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop" alt="土浦店外観">
+                    </div>
+                    <h3>土浦店</h3>
+                    <div class="store-info">
+                        <p>📍 茨城県土浦市中央●-●●-●</p>
+                        <p>📞 029-●●●-●●●●</p>
+                        <p>🕒 9:30-18:30（定休日：水曜日）</p>
+                        <p>🎯 JR常磐線「土浦駅」徒歩8分</p>
+                    </div>
+                    <div class="store-features">
+                        <span class="feature-tag">駐車場あり</span>
+                        <span class="feature-tag">オーダーメイド</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="#fef9f9"></path>
+            </svg>
+        </div>
+
+        <section class="gallery">
+            <h2>ギャラリー</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=600&fit=crop" alt="ケーキ1" data-index="0" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=600&fit=crop" alt="ケーキ2" data-index="1" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&h=600&fit=crop" alt="ケーキ3" data-index="2" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600&h=600&fit=crop" alt="ケーキ4" data-index="3" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?w=600&h=600&fit=crop" alt="ケーキ5" data-index="4" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=600&h=600&fit=crop" alt="ケーキ6" data-index="5" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=600&fit=crop" alt="ケーキ7" data-index="6" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=600&fit=crop" alt="ケーキ8" data-index="7" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=600&fit=crop" alt="ケーキ9" data-index="8" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=600&fit=crop" alt="ケーキ10" data-index="9" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=600&fit=crop" alt="ケーキ11" data-index="10" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop" alt="ケーキ12" data-index="11" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=600&h=600&fit=crop" alt="ケーキ13" data-index="12" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&h=600&fit=crop" alt="ケーキ14" data-index="13" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=600&fit=crop" alt="ケーキ15" data-index="14" class="gallery-img">
+            </div>
+            <div class="gallery-mobile">
+                <div class="gallery-mobile-container">
+                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=600&fit=crop" alt="ケーキ1" data-index="0" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=600&fit=crop" alt="ケーキ2" data-index="1" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&h=600&fit=crop" alt="ケーキ3" data-index="2" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600&h=600&fit=crop" alt="ケーキ4" data-index="3" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?w=600&h=600&fit=crop" alt="ケーキ5" data-index="4" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=600&h=600&fit=crop" alt="ケーキ6" data-index="5" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=600&fit=crop" alt="ケーキ7" data-index="6" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=600&fit=crop" alt="ケーキ8" data-index="7" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=600&fit=crop" alt="ケーキ9" data-index="8" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=600&fit=crop" alt="ケーキ10" data-index="9" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=600&fit=crop" alt="ケーキ11" data-index="10" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop" alt="ケーキ12" data-index="11" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=600&h=600&fit=crop" alt="ケーキ13" data-index="12" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&h=600&fit=crop" alt="ケーキ14" data-index="13" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=600&fit=crop" alt="ケーキ15" data-index="14" class="gallery-img">
+                </div>
+            </div>
+        </section>
+
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close">&times;</span>
+                <button class="lightbox-prev">&#10094;</button>
+                <img class="lightbox-img" id="lightbox-img" src="" alt="">
+                <button class="lightbox-next">&#10095;</button>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>お問い合わせ</h3>
+                <p>📍 茨城県稲敷郡阿見町●●●-●-●</p>
+                <p>📞 029-●●●-●●●●</p>
+                <p>📧 info@●●●●●●●.jp</p>
+                <p>🕒 営業時間: 9:00-19:00（定休日：月曜日）</p>
+            </div>
+            <div class="map-section">
+                <h3>アクセス</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.8234567890123!2d140.2234567890123!3d36.0234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60220c1234567890%3A0x1234567890abcdef!2z6Zi/6KaL55S65b2557eQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp" 
+                    width="300" 
+                    height="200" 
+                    style="border:0; border-radius: 10px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Sweet Dreams Bakery" class="footer-logo-img">
+                <p>あなたの特別な日を彩ります</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sweet Dreams Bakery. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // ハンバーガーメニュー機能
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // メニューリンククリック時にメニューを閉じる
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        document.querySelector('.notice-close').addEventListener('click', function() {
+            document.querySelector('.notice-banner').style.display = 'none';
+        });
+
+        // Hero slideshow
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 4000);
+
+        // Lightbox functionality
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        let currentIndex = 0;
+
+        const images = [
+            'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1557925923-cd4648e211a0?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1587668178277-295251f900ce?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&h=600&fit=crop'
+        ];
+
+        // デスクトップとモバイル両方のギャラリー画像にイベントを追加
+        const allGalleryImages = document.querySelectorAll('.gallery-img');
+        allGalleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentIndex = parseInt(img.dataset.index);
+                lightboxImg.src = images[currentIndex];
+                lightbox.style.display = 'block';
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightboxPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            lightboxImg.src = images[currentIndex];
+        });
+
+        lightboxNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            lightboxImg.src = images[currentIndex];
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+    </div>
+</body>
+</html>

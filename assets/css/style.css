@@ -69,8 +69,9 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 25px;
+    font-size: 0.9rem;
 }
 
 .nav-menu a:hover {
@@ -628,10 +629,89 @@ body {
     margin: 0.5rem 0;
 }
 
+/* デザイン例セクション用スワイプ */
+.samples-mobile {
+    display: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0;
+}
+
+.samples-mobile::-webkit-scrollbar {
+    height: 8px;
+}
+
+.samples-mobile::-webkit-scrollbar-track {
+    background: rgba(96, 165, 250, 0.1);
+    border-radius: 10px;
+}
+
+.samples-mobile::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 10px;
+}
+
+.samples-mobile-container {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.samples-mobile .content-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+}
+
+/* サンプルインジケーター */
+.samples-indicators {
+    display: none;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.sample-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(96, 165, 250, 0.3);
+    transition: all 0.3s ease;
+}
+
+.sample-indicator.active {
+    background: var(--primary-blue);
+    transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
     .pricing-container {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    /* デザイン例をスワイプ対応に切り替え */
+    #samples .content-grid {
+        display: none;
+    }
+    
+    .samples-mobile {
+        display: block;
+    }
+    
+    .samples-indicators {
+        display: flex;
+    }
+    
+    /* 最初のカードを部分的に表示してスワイプを示唆 */
+    .samples-mobile-container {
+        padding-left: 1rem;
+        padding-right: 0.5rem;
+    }
+    
+    .samples-mobile .content-card:last-child {
+        margin-right: 1rem;
     }
 }
 
