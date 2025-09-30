@@ -73,4 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
         new SwipeHandler(galleryMobile);
         galleryMobile.style.cursor = 'grab';
     }
+    
+    // フォーメーションのスワイプ機能
+    const formationSwipe = document.querySelector('.formation-swipe');
+    if (formationSwipe) {
+        new SwipeHandler(formationSwipe);
+    }
 });
