@@ -664,6 +664,12 @@ body {
     margin: 2rem 0;
     position: relative;
     height: 200px;
+    cursor: grab;
+    user-select: none;
+}
+
+.scrolling-gallery.grabbing {
+    cursor: grabbing;
 }
 
 .gallery-track {

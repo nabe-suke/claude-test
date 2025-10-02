@@ -195,23 +195,63 @@ function initMobileMenu() {
 // 無限ループギャラリー
 class InfiniteGallery {
     constructor() {
+        this.container = document.querySelector('.scrolling-gallery');
         this.track = document.querySelector('.gallery-track');
         this.itemWidth = 282;
         this.offset = 0;
         this.animationId = null;
         this.autoScrollSpeed = 0.5;
+        this.isDragging = false;
+        this.startX = 0;
         this.init();
     }
     
     init() {
         const itemCount = this.track.children.length / 2;
         this.loopWidth = this.itemWidth * itemCount;
+        this.initEvents();
+        this.startAutoScroll();
+    }
+    
+    initEvents() {
+        this.container.addEventListener('mousedown', this.onDragStart.bind(this));
+        this.container.addEventListener('mousemove', this.onDragMove.bind(this));
+        this.container.addEventListener('mouseup', this.onDragEnd.bind(this));
+        this.container.addEventListener('mouseleave', this.onDragEnd.bind(this));
+        this.container.addEventListener('touchstart', this.onDragStart.bind(this));
+        this.container.addEventListener('touchmove', this.onDragMove.bind(this));
+        this.container.addEventListener('touchend', this.onDragEnd.bind(this));
+    }
+    
+    onDragStart(e) {
+        this.isDragging = true;
+        this.container.classList.add('grabbing');
+        this.startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+        this.stopAutoScroll();
+    }
+    
+    onDragMove(e) {
+        if (!this.isDragging) return;
+        e.preventDefault();
+        const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+        const delta = currentX - this.startX;
+        this.offset += delta;
+        this.startX = currentX;
+        this.updatePosition();
+    }
+    
+    onDragEnd() {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.container.classList.remove('grabbing');
         this.startAutoScroll();
     }
     
     updatePosition() {
         if (this.offset <= -this.loopWidth) {
             this.offset += this.loopWidth;
+        } else if (this.offset > 0) {
+            this.offset -= this.loopWidth;
         }
         this.track.style.transform = `translateX(${this.offset}px)`;
     }
@@ -219,11 +259,20 @@ class InfiniteGallery {
     startAutoScroll() {
         if (this.animationId) return;
         const animate = () => {
-            this.offset -= this.autoScrollSpeed;
-            this.updatePosition();
+            if (!this.isDragging) {
+                this.offset -= this.autoScrollSpeed;
+                this.updatePosition();
+            }
             this.animationId = requestAnimationFrame(animate);
         };
         this.animationId = requestAnimationFrame(animate);
+    }
+    
+    stopAutoScroll() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+            this.animationId = null;
+        }
     }
 }
 
