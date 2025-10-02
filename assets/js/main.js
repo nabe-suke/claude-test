@@ -208,6 +208,8 @@ class InfiniteGallery {
     
     updateItemWidth() {
         this.itemWidth = window.innerWidth <= 768 ? 232 : 282;
+        const itemCount = this.track.children.length / 2;
+        this.loopWidth = this.itemWidth * itemCount;
     }
     
     init() {
@@ -218,7 +220,6 @@ class InfiniteGallery {
         
         window.addEventListener('resize', () => {
             this.updateItemWidth();
-            this.loopWidth = this.itemWidth * itemCount;
         });
     }
     

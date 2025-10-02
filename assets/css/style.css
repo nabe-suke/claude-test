@@ -814,7 +814,7 @@ body {
     
     .scrolling-gallery {
         height: 150px;
-        overflow: visible;
+        overflow: hidden;
     }
     
     .modal-content {
