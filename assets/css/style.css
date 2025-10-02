@@ -664,16 +664,21 @@ body {
     margin: 2rem 0;
     position: relative;
     height: 200px;
+    cursor: grab;
+    user-select: none;
+}
+
+.scrolling-gallery.grabbing {
+    cursor: grabbing;
 }
 
 .gallery-track {
     display: flex;
     gap: 2rem;
-    animation: scroll 30s linear infinite;
     width: fit-content;
+    padding: 0 1rem;
+    will-change: transform;
 }
-
-
 
 .gallery-item {
     flex: 0 0 250px;
@@ -681,9 +686,10 @@ body {
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(37, 99, 235, 0.1);
     cursor: pointer;
+    pointer-events: none;
 }
 
 .gallery-item:hover {
@@ -691,14 +697,7 @@ body {
     box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-250px * 7 - 14rem));
-    }
-}
+
 
 /* モーダルプレビュー */
 .modal {
@@ -823,6 +822,7 @@ body {
     
     .scrolling-gallery {
         height: 150px;
+        cursor: default;
     }
     
     .modal-content {
@@ -1068,6 +1068,11 @@ body {
     left: 0;
     color: var(--primary-blue);
     font-weight: bold;
+}
+
+#about .content-card .profile-img {
+    display: block;
+    margin: 0 auto 1rem auto;
 }
 
 /* サイトマップページスタイル */

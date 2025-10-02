@@ -126,7 +126,7 @@
                     <p>レスポンシブ対応・SEO対策も完備。</p>
                     <br/>
                     <p>💬代表コメント</p>
-                    <p>「最初はざっくりしたイメージだけで大丈夫です！出来上がったサンプルを見てから、アイデアを盛り込んで楽しく作成しましょう！」</p>
+                    <p>「最初はざっくりしたイメージだけで大丈夫です！すぐにサンプルを御作りしますので、そこからアイデアを盛り込んで楽しく作成しましょう！」</p>
                 </div>
                 <div class="content-card">
                     <h3>特徴</h3>
@@ -147,7 +147,7 @@
         <div class="container">
             <h2>デザイン例</h2>            
             <div class="scrolling-gallery">
-                <div class="gallery-track">
+                <div class="gallery-track" id="gallery-track">
                     <!--シームレスなループのための1回目のセット-->
                     <img src="assets/images/template_party/cake.webp" class="gallery-item">
                     <img src="assets/images/template_party/green.webp" class="gallery-item">
@@ -349,13 +349,15 @@
 
     <script src="assets/js/main.js"></script>
     <script>
-        // プレビュー機能
+        // プレビュー機能と無限スクロール
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('preview-modal');
             const previewImage = document.getElementById('preview-image');
             const closeBtn = document.querySelector('.close');
             const galleryItems = document.querySelectorAll('.gallery-item');
+            const gallery = document.querySelector('.scrolling-gallery');
             
+            // プレビュー機能
             galleryItems.forEach(item => {
                 item.addEventListener('click', function() {
                     modal.style.display = 'block';
@@ -373,6 +375,27 @@
                     modal.style.display = 'none';
                 }
             });
+            
+            // 無限スクロール機能
+            const itemWidth = 282; // 250px + 32px gap
+            const totalItems = 7;
+            const setWidth = itemWidth * totalItems;
+            
+            gallery.addEventListener('scroll', function() {
+                const scrollLeft = gallery.scrollLeft;
+                const maxScroll = setWidth * 2;
+                
+                if (scrollLeft >= maxScroll) {
+                    gallery.scrollLeft = setWidth;
+                } else if (scrollLeft <= 0) {
+                    gallery.scrollLeft = setWidth;
+                }
+            });
+            
+            // 初期位置を中央のセットに設定
+            setTimeout(() => {
+                gallery.scrollLeft = setWidth;
+            }, 100);
         });
     </script>
 </body>
