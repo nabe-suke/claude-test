@@ -660,16 +660,10 @@ body {
 
 /* 横スクロールギャラリー */
 .scrolling-gallery {
-    overflow: hidden;
+    overflow: visible;
     margin: 2rem 0;
     position: relative;
     height: 200px;
-    cursor: grab;
-    user-select: none;
-}
-
-.scrolling-gallery.grabbing {
-    cursor: grabbing;
 }
 
 .gallery-track {
@@ -677,7 +671,6 @@ body {
     gap: 2rem;
     width: fit-content;
     padding: 0 1rem;
-    will-change: transform;
 }
 
 .gallery-item {
@@ -686,15 +679,8 @@ body {
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(37, 99, 235, 0.1);
     cursor: pointer;
-    pointer-events: none;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
 }
 
 

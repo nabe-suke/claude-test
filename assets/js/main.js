@@ -192,14 +192,11 @@ function initMobileMenu() {
     });
 }
 
-// 無限ループギャラリー機能
+// 無限ループギャラリー
 class InfiniteGallery {
-    constructor(container) {
-        this.container = container;
-        this.track = container.querySelector('.gallery-track');
-        this.itemWidth = 282; // 250px + 32px gap
-        this.isDragging = false;
-        this.startX = 0;
+    constructor() {
+        this.track = document.querySelector('.gallery-track');
+        this.itemWidth = 282;
         this.offset = 0;
         this.animationId = null;
         this.autoScrollSpeed = 0.5;
@@ -209,50 +206,12 @@ class InfiniteGallery {
     init() {
         const itemCount = this.track.children.length / 2;
         this.loopWidth = this.itemWidth * itemCount;
-        this.track.style.transform = `translateX(0px)`;
-        this.startAutoScroll();
-        this.initEvents();
-    }
-    
-    initEvents() {
-        this.container.addEventListener('mousedown', this.onDragStart.bind(this));
-        this.container.addEventListener('mousemove', this.onDragMove.bind(this));
-        this.container.addEventListener('mouseup', this.onDragEnd.bind(this));
-        this.container.addEventListener('mouseleave', this.onDragEnd.bind(this));
-        this.container.addEventListener('touchstart', this.onDragStart.bind(this));
-        this.container.addEventListener('touchmove', this.onDragMove.bind(this));
-        this.container.addEventListener('touchend', this.onDragEnd.bind(this));
-    }
-    
-    onDragStart(e) {
-        this.isDragging = true;
-        this.container.classList.add('grabbing');
-        this.startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-        this.stopAutoScroll();
-    }
-    
-    onDragMove(e) {
-        if (!this.isDragging) return;
-        e.preventDefault();
-        const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-        const delta = currentX - this.startX;
-        this.offset += delta;
-        this.startX = currentX;
-        this.updatePosition();
-    }
-    
-    onDragEnd() {
-        if (!this.isDragging) return;
-        this.isDragging = false;
-        this.container.classList.remove('grabbing');
         this.startAutoScroll();
     }
     
     updatePosition() {
         if (this.offset <= -this.loopWidth) {
             this.offset += this.loopWidth;
-        } else if (this.offset > 0) {
-            this.offset -= this.loopWidth;
         }
         this.track.style.transform = `translateX(${this.offset}px)`;
     }
@@ -260,20 +219,11 @@ class InfiniteGallery {
     startAutoScroll() {
         if (this.animationId) return;
         const animate = () => {
-            if (!this.isDragging) {
-                this.offset -= this.autoScrollSpeed;
-                this.updatePosition();
-            }
+            this.offset -= this.autoScrollSpeed;
+            this.updatePosition();
             this.animationId = requestAnimationFrame(animate);
         };
         this.animationId = requestAnimationFrame(animate);
-    }
-    
-    stopAutoScroll() {
-        if (this.animationId) {
-            cancelAnimationFrame(this.animationId);
-            this.animationId = null;
-        }
     }
 }
 
@@ -284,10 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
         new Slideshow();
     }
     
-    // 無限ループギャラリー初期化
-    const gallery = document.querySelector('.scrolling-gallery');
-    if (gallery) {
-        new InfiniteGallery(gallery);
+    // ギャラリー初期化
+    if (document.querySelector('.gallery-track')) {
+        new InfiniteGallery();
     }
     
     // その他の機能初期化
