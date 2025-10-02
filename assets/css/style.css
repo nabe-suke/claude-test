@@ -643,6 +643,102 @@ body {
     margin: 0.5rem 0;
 }
 
+/* 横スクロールギャラリー */
+.scrolling-gallery {
+    overflow: hidden;
+    margin: 2rem 0;
+    position: relative;
+    height: 200px;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 20s linear infinite;
+    width: calc(200% + 2rem);
+}
+
+
+
+.gallery-item {
+    flex: 0 0 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* モーダルプレビュー */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.close:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* デザイン例セクション用スワイプ */
 .samples-mobile {
     display: none;
@@ -703,6 +799,20 @@ body {
     .pricing-container {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .gallery-item {
+        flex: 0 0 200px;
+        height: 150px;
+    }
+    
+    .scrolling-gallery {
+        height: 150px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
     }
     
     /* デザイン例をスワイプ対応に切り替え */
