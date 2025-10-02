@@ -197,7 +197,7 @@ class InfiniteGallery {
     constructor() {
         this.container = document.querySelector('.scrolling-gallery');
         this.track = document.querySelector('.gallery-track');
-        this.itemWidth = 282;
+        this.updateItemWidth();
         this.offset = 0;
         this.animationId = null;
         this.autoScrollSpeed = 0.5;
@@ -206,11 +206,20 @@ class InfiniteGallery {
         this.init();
     }
     
+    updateItemWidth() {
+        this.itemWidth = window.innerWidth <= 768 ? 232 : 282;
+    }
+    
     init() {
         const itemCount = this.track.children.length / 2;
         this.loopWidth = this.itemWidth * itemCount;
         this.initEvents();
         this.startAutoScroll();
+        
+        window.addEventListener('resize', () => {
+            this.updateItemWidth();
+            this.loopWidth = this.itemWidth * itemCount;
+        });
     }
     
     initEvents() {
