@@ -660,7 +660,7 @@ body {
 
 /* 横スクロールギャラリー */
 .scrolling-gallery {
-    overflow: visible;
+    overflow: hidden;
     margin: 2rem 0;
     position: relative;
     height: 200px;
@@ -670,6 +670,12 @@ body {
 
 .scrolling-gallery.grabbing {
     cursor: grabbing;
+}
+
+@media (min-width: 769px) {
+    .scrolling-gallery {
+        overflow: visible;
+    }
 }
 
 .gallery-track {
@@ -814,7 +820,7 @@ body {
     
     .scrolling-gallery {
         height: 150px;
-        overflow: hidden;
+        overflow: visible;
     }
     
     .modal-content {
