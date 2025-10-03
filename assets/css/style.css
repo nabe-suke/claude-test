@@ -93,14 +93,27 @@ body {
     width: 25px;
     height: 3px;
     background: #333;
-    margin: 3px 0;
     transition: 0.3s;
     border-radius: 2px;
     display: block;
+    position: relative;
+}
+
+.nav-toggle span:nth-child(1) {
+    top: 0;
+}
+
+.nav-toggle span:nth-child(2) {
+    top: 6px;
+}
+
+.nav-toggle span:nth-child(3) {
+    top: 12px;
 }
 
 .nav-toggle.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(45deg);
+    top: 6px;
 }
 
 .nav-toggle.active span:nth-child(2) {
@@ -108,7 +121,8 @@ body {
 }
 
 .nav-toggle.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(-45deg);
+    top: 0;
 }
 
 /* メインビジュアル（スライドショー） */
