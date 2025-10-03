@@ -1,4 +1,7 @@
-// スライドショー機能
+/**
+ * メインビジュアルのスライドショー機能
+ * 自動スライド、インジケータークリック、スワイプ操作に対応
+ */
 class Slideshow {
     constructor() {
         this.slides = document.querySelectorAll('.slide');
@@ -192,7 +195,11 @@ function initMobileMenu() {
     });
 }
 
-// 無限ループギャラリー
+/**
+ * デザイン例の無限ループギャラリー
+ * 自動スクロール + ドラッグ/スワイプ操作対応
+ * 2セット分の画像を使用してシームレスなループを実現
+ */
 class InfiniteGallery {
     constructor() {
         this.container = document.querySelector('.scrolling-gallery');
@@ -206,6 +213,11 @@ class InfiniteGallery {
         this.init();
     }
     
+    /**
+     * 画面サイズに応じてアイテム幅を更新
+     * モバイル: 232px (200px + 32px gap)
+     * デスクトップ: 282px (250px + 32px gap)
+     */
     updateItemWidth() {
         this.itemWidth = window.innerWidth <= 768 ? 232 : 282;
         const itemCount = this.track.children.length / 2;
@@ -223,6 +235,10 @@ class InfiniteGallery {
         });
     }
     
+    /**
+     * マウス・タッチイベントの初期化
+     * ドラッグ&スワイプ操作に対応
+     */
     initEvents() {
         this.container.addEventListener('mousedown', this.onDragStart.bind(this));
         this.container.addEventListener('mousemove', this.onDragMove.bind(this));
@@ -257,6 +273,10 @@ class InfiniteGallery {
         this.startAutoScroll();
     }
     
+    /**
+     * ギャラリーの位置を更新
+     * 7枚目の後に瞬時に1枚目に戻ることでシームレスな無限ループを実現
+     */
     updatePosition() {
         if (this.offset <= -this.loopWidth) {
             this.offset += this.loopWidth;

@@ -251,8 +251,94 @@ body {
     background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
+/* サンプルセクション - 横スクロールを防ぐ */
 #samples {
     overflow-x: hidden;
+}
+
+/* ==========================================================================
+   問い合わせフォーム
+   ========================================================================== */
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.6);
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #999;
 }
 
 .container {
@@ -662,7 +748,11 @@ body {
     margin: 0.5rem 0;
 }
 
-/* 横スクロールギャラリー */
+/* ==========================================================================
+   デザイン例ギャラリー - 無限ループスクロール
+   ========================================================================== */
+
+/* ギャラリーコンテナ - モバイルではoverflow:hidden、デスクトップではoverflow:visible */
 .scrolling-gallery {
     overflow: hidden;
     margin: 2rem 0;
@@ -676,12 +766,14 @@ body {
     cursor: grabbing;
 }
 
+/* デスクトップ表示時は8枚目以降も表示 */
 @media (min-width: 769px) {
     .scrolling-gallery {
         overflow: visible;
     }
 }
 
+/* ギャラリートラック - 画像を横並びに配置 */
 .gallery-track {
     display: flex;
     gap: 2rem;
@@ -689,6 +781,7 @@ body {
     padding: 0 1rem;
 }
 
+/* ギャラリーアイテム - デスクトップ: 250px, モバイル: 200px */
 .gallery-item {
     flex: 0 0 250px;
     height: 200px;
@@ -811,17 +904,22 @@ body {
     transform: scale(1.2);
 }
 
+/* ==========================================================================
+   モバイル表示 (768px以下)
+   ========================================================================== */
 @media (max-width: 768px) {
     .pricing-container {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
     
+    /* モバイル用ギャラリーアイテムサイズ */
     .gallery-item {
         flex: 0 0 200px;
         height: 150px;
     }
     
+    /* モバイルでも8枚目以降を表示 */
     .scrolling-gallery {
         height: 150px;
         overflow: visible;
