@@ -323,6 +323,16 @@ body {
     line-height: 1.8;
 }
 
+.mobile-br {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-br {
+        display: inline;
+    }
+}
+
 .contact-form {
     background: white;
     padding: 2rem;
