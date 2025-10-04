@@ -1384,6 +1384,11 @@ body {
     }
     
     .nav-right {
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    .nav-social {
         display: flex;
         align-items: center;
     }
