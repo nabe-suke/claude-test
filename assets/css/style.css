@@ -1106,7 +1106,7 @@ body {
 }
 
 .company-logo {
-    height: 80px;
+    height: 50px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
@@ -1119,7 +1119,7 @@ body {
 
 .profile-location {
     color: #888;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .profile-motto {
@@ -1257,7 +1257,7 @@ body {
     }
     
     .company-logo {
-        height: 60px;
+        height: 40px;
     }
     
     .profile-motto {
@@ -1292,6 +1292,10 @@ body {
 #about .content-card .profile-img {
     display: block;
     margin: 0 auto 1rem auto;
+}
+
+#about .content-card h3 {
+    text-align: center;
 }
 
 /* サイトマップページスタイル */
