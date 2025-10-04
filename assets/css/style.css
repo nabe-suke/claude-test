@@ -65,6 +65,7 @@ body {
     height: 45px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    display: block;
 }
 
 .nav-menu {
@@ -1371,6 +1372,12 @@ body {
 @media (max-width: 768px) {
     .nav-container {
         padding: 1rem;
+        align-items: center;
+    }
+    
+    .nav-logo {
+        display: flex;
+        align-items: center;
     }
     
     .nav-toggle {
