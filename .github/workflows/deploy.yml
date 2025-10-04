@@ -13,6 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Prepare deploy files
+        run: |
+          mkdir -p deploy
+          cp index.html deploy/
+          cp favicon.ico deploy/
+          cp .htaccess deploy/
+          cp -r pages deploy/
+          cp -r assets deploy/
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
@@ -20,8 +29,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/_____samples_____/**
+          local-dir: ./deploy/
