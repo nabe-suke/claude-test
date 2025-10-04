@@ -1,23 +1,23 @@
-# GitHub Actions FTP Deploy 設定方法
+# GitHub Actions SFTP Deploy 設定方法
 
-このワークフローは、masterブランチへのマージ時に自動的にFTPサーバーへデプロイします。
+このワークフローは、master/mainブランチへのマージ時に自動的にSFTPサーバーへデプロイします。
 
 ## 必要なシークレット設定
 
 GitHubリポジトリの Settings > Secrets and variables > Actions で以下のシークレットを設定してください：
 
-1. **FTP_SERVER**: FTPサーバーのホスト名（例: ftp.example.com）
-2. **FTP_USERNAME**: FTPユーザー名
-3. **FTP_PASSWORD**: FTPパスワード
-4. **FTP_SERVER_DIR**: サーバー上のデプロイ先ディレクトリ（例: /public_html/ または /）
+1. **FTP_SERVER**: SFTPサーバーのホスト名（例: example.com）
+2. **FTP_USERNAME**: SFTPユーザー名
+3. **FTP_PASSWORD**: SFTPパスワード
+4. **FTP_SERVER_DIR**: サーバー上のデプロイ先ディレクトリ（例: /public_html/ または /home/user/public_html）
 
 ## 使い方
 
 1. 上記のシークレットを設定
-2. masterブランチにマージまたはプッシュ
-3. 自動的にFTPデプロイが実行されます
+2. master/mainブランチにマージまたはプッシュ
+3. 自動的にSFTPデプロイが実行されます
 
 ## 注意事項
 
-- 初回デプロイ時は全ファイルがアップロードされます
-- 2回目以降は変更されたファイルのみがアップロードされます
+- SFTP接続を使用します（FTP/FTPSではありません）
+- デプロイ時に全ファイルがアップロードされます
