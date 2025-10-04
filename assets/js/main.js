@@ -115,10 +115,16 @@ class Slideshow {
 // スムーススクロール機能
 function initSmoothScroll() {
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector('.nav-toggle');
     
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            
+            if (navMenu) navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+            
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
@@ -178,20 +184,12 @@ function initCardAnimations() {
 function initMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
     
     if (!navToggle || !navMenu) return;
     
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
-    });
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
     });
 }
 
