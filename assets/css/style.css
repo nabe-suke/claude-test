@@ -1386,15 +1386,20 @@ body {
     .nav-right {
         display: flex !important;
         align-items: center !important;
+        gap: 1rem;
+    }
+    
+    .nav-toggle {
+        display: flex;
+        align-self: center;
+        margin: 0;
     }
     
     .nav-social {
         display: flex;
         align-items: center;
-    }
-    
-    .nav-toggle {
-        display: flex;
+        align-self: center;
+        margin: 0;
     }
     
     .nav-menu {
@@ -1463,9 +1468,7 @@ body {
         gap: 1rem;
     }
     
-    .nav-social {
-        margin-top: 1rem;
-    }
+
 }
 
 @media (max-width: 480px) {
