@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: Deploy to Server!
 
 on:
   push:
@@ -13,12 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+      
       - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          port: 22
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          remote_path: ${{ secrets.FTP_SERVER_DIR }}
-          sftp_only: true
+        run: |
+          sshpass -p "${{ secrets.FTP_PASSWORD }}" sftp -o StrictHostKeyChecking=no -P 22 ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_SERVER }} <<EOF
+          cd ${{ secrets.FTP_SERVER_DIR }}
+          put -r * .
+          bye
+          EOF
